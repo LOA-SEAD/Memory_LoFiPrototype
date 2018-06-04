@@ -23,30 +23,32 @@ public class Card : MonoBehaviour {
         DeselectCard();
     }
 
-    /*private void OnMouseOver()
-    {
-    }*/
-
     private void OnMouseDown()
     {
-        if (MemoryPairing.canSelect) {
-            if(!found && !flipped)
+        TrySubmit();
+    }
+
+    public void TrySubmit()
+    {
+        if (MemoryPairing.canSelect)
+        {
+            if (!found && !flipped)
             {
                 ActivateCard();
             }
             else
             {
-
+                //Play invalid card sound
             }
         }
     }
 
-    private void SelectCard()
+    public void SelectCard()
     {
         this.GetComponent<AudioSource>().Play();
         //Activate hover effect
     }
-    private void DeselectCard()
+    public void DeselectCard()
     {
         //Deactivate hover effect
     }
@@ -74,5 +76,11 @@ public class Card : MonoBehaviour {
     public void UnFlip() {
         transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
         flipped = false;
+    }
+
+
+    public void Move(float value)
+    {
+        
     }
 }

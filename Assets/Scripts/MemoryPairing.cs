@@ -37,16 +37,13 @@ public class MemoryPairing : MonoBehaviour {
         currentCard = card;
         if(previousCard == null)
         {
-            Debug.Log("previous card was null");
             previousCard = card;
             currentCard = null;
         } else
         {
             canSelect = false;
-            Debug.Log("starting waiting time");
             yield return new WaitForSeconds(waitingTime);
 
-            Debug.Log("back from waiting time");
             if (card.cardNumber == previousCard.cardNumber) //Correct Pair
             {
                 CorrectPair();
@@ -67,7 +64,6 @@ public class MemoryPairing : MonoBehaviour {
 
     void CorrectPair()
     {
-        Debug.Log("pairs were correct");
         pairsFound++;
 
         // Play sound
@@ -80,7 +76,6 @@ public class MemoryPairing : MonoBehaviour {
 
     void WrongPair()
     {
-        Debug.Log("wrong pairs");
 
         // Play sound
         audioSource.clip = wrongPair;
