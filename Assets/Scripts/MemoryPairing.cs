@@ -22,7 +22,10 @@ public class MemoryPairing : MonoBehaviour {
     public AudioClip correctPair;
     public AudioClip wrongPair;
     public AudioClip allPairsFound;
+    public AudioClip wallSound;
     AudioSource audioSource;
+
+    private BoardInputHandler board;
 
 	// Use this for initialization
 	void Start ()
@@ -30,8 +33,11 @@ public class MemoryPairing : MonoBehaviour {
         canSelect = true;
         previousCard = null;
         audioSource = this.GetComponent<AudioSource>();
-	}
+        board = this.GetComponent<BoardInputHandler>();
 
+    }
+
+    #region Memory Game logics
     public IEnumerator ActivateCard(Card card)
     {
         currentCard = card;
@@ -42,6 +48,7 @@ public class MemoryPairing : MonoBehaviour {
         } else
         {
             canSelect = false;
+            board.enabled = false;
             yield return new WaitForSeconds(waitingTime);
 
             if (card.cardNumber == previousCard.cardNumber) //Correct Pair
@@ -52,6 +59,8 @@ public class MemoryPairing : MonoBehaviour {
                 WrongPair();
             }
             canSelect = true;
+            board.enabled = true;
+
             previousCard = null;
             currentCard = null;
 
@@ -67,8 +76,7 @@ public class MemoryPairing : MonoBehaviour {
         pairsFound++;
 
         // Play sound
-        audioSource.clip = correctPair;
-        audioSource.Play();
+        PlayCorrectPair();
         
         currentCard.SetAsFound();
         previousCard.SetAsFound();
@@ -78,8 +86,7 @@ public class MemoryPairing : MonoBehaviour {
     {
 
         // Play sound
-        audioSource.clip = wrongPair;
-        audioSource.Play();
+        PlayWrongPair();
 
         currentCard.UnFlip();
         previousCard.UnFlip();
@@ -90,10 +97,33 @@ public class MemoryPairing : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
 
         // Play sound
-        audioSource.clip = allPairsFound;
-        audioSource.Play();
+        PlayAllPairsFound();
 
         yield return new WaitForSeconds(1.0f);
         //MainMenu();
     }
+
+    #endregion
+
+
+    #region Play sound methods
+    public void PlayCorrectPair()
+    {
+        audioSource.clip = correctPair;
+        audioSource.Play();
+    }
+
+    public void PlayAllPairsFound()
+    {
+        audioSource.clip = allPairsFound;
+        audioSource.Play();
+    }
+
+    public void PlayWrongPair()
+    {
+        audioSource.clip = wrongPair;
+        audioSource.Play();
+    }
+
+    #endregion
 }

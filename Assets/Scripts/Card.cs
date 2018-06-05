@@ -5,14 +5,22 @@ using UnityEngine;
 public class Card : MonoBehaviour {
 
     public CardNumber cardNumber;
+    public AudioClip selectSound;
+    public AudioClip wallSound;
+
+    private float selectPitch;
+
     private bool found = false;
     private bool flipped = false;
     private MemoryPairing memoryPairing;
+    private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
         memoryPairing = FindObjectOfType<MemoryPairing>();
-	}
+        audioSource = this.GetComponent<AudioSource>();
+        selectPitch = audioSource.pitch;
+    }
 
     private void OnMouseEnter()
     {
@@ -45,7 +53,7 @@ public class Card : MonoBehaviour {
 
     public void SelectCard()
     {
-        this.GetComponent<AudioSource>().Play();
+        PlaySelectSound();
         //Activate hover effect
     }
     public void DeselectCard()
@@ -60,7 +68,7 @@ public class Card : MonoBehaviour {
 
     public void SetAsFound()
     {
-        GetComponent<AudioSource>().volume = 0.5f;
+        audioSource.volume = 0.5f;
         found = true;
         SpriteRenderer[] cardSprites = GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sprite in cardSprites)
@@ -79,8 +87,17 @@ public class Card : MonoBehaviour {
     }
 
 
-    public void Move(float value)
+    public void PlaySelectSound()
     {
-        
+        audioSource.pitch = selectPitch;
+        audioSource.clip = selectSound;
+        audioSource.Play();
+    }
+
+    public void PlayWallSound()
+    {
+        audioSource.pitch = 1.0f;
+        audioSource.clip = wallSound;
+        audioSource.Play();
     }
 }

@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 2
+  selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
+  wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
 --- !u!4 &24437208
 Transform:
   m_ObjectHideFlags: 0
@@ -739,6 +741,7 @@ MonoBehaviour:
   correctPair: {fileID: 8300000, guid: 1a3c4dcebc823134dadccba18cc42192, type: 3}
   wrongPair: {fileID: 8300000, guid: 3c03c03ed0b1508478b78ec0754bd86d, type: 3}
   allPairsFound: {fileID: 8300000, guid: 3d46d6d1bffe66247aa9d61ad214c985, type: 3}
+  wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
 --- !u!114 &377417235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,7 +759,6 @@ MonoBehaviour:
   row2:
   - {fileID: 1850442656}
   - {fileID: 24437205}
-  currentSelect: {fileID: 0}
 --- !u!82 &377417236
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1150,6 +1152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 1
+  selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
+  wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
 --- !u!4 &1006826912
 Transform:
   m_ObjectHideFlags: 0
@@ -1598,6 +1602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 1
+  selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
+  wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
 --- !u!61 &1520326123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1980,6 +1986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 2
+  selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
+  wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
 --- !u!4 &1850442659
 Transform:
   m_ObjectHideFlags: 0

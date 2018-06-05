@@ -9,10 +9,12 @@ public class BoardInputHandler : MonoBehaviour {
     public List<GameObject> row1;
     public List<GameObject> row2;
     private EventSystem eventSystem;
+    private MemoryPairing memoryPairing;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         eventSystem = GetComponent<EventSystem>();
+        memoryPairing = GetComponent<MemoryPairing>();
     }
 	
 	// Update is called once per frame
@@ -52,6 +54,7 @@ public class BoardInputHandler : MonoBehaviour {
         else
         {
             //play wall sound
+            eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
         }
     }
 
@@ -65,6 +68,7 @@ public class BoardInputHandler : MonoBehaviour {
         else
         {
             //play wall sound
+            eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
         }
     }
 
@@ -78,6 +82,7 @@ public class BoardInputHandler : MonoBehaviour {
             if (cardIndex == 0)
             {
                 //play wall sound
+                eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
             }
             else
             {
@@ -93,6 +98,7 @@ public class BoardInputHandler : MonoBehaviour {
             if (cardIndex == 0)
             {
                 //play wall sound
+                eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
             }
             else
             {
@@ -112,6 +118,7 @@ public class BoardInputHandler : MonoBehaviour {
             if (cardIndex == row1.Count - 1)
             {
                 //play wall sound
+                eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
             }
             else
             {
@@ -127,6 +134,7 @@ public class BoardInputHandler : MonoBehaviour {
             if (cardIndex == row2.Count - 1)
             {
                 //play wall sound
+                eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
             }
             else
             {
