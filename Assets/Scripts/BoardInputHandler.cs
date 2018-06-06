@@ -31,12 +31,16 @@ public class BoardInputHandler : MonoBehaviour {
             Submit();
         } else if (Input.GetKeyDown(KeyCode.Q)) { //Direct access
             Access(0, 0);
-        } else if(Input.GetKeyDown(KeyCode.W)) {
+        } else if (Input.GetKeyDown(KeyCode.W)) {
             Access(0, 1);
+        } else if (Input.GetKeyDown(KeyCode.E)) {
+            Access(0, 2);
         } else if (Input.GetKeyDown(KeyCode.A)) {
             Access(1, 0);
         } else if (Input.GetKeyDown(KeyCode.S)) {
-            Access(0, 1);
+            Access(1, 1);
+        } else if (Input.GetKeyDown(KeyCode.D)) {
+            Access(1, 2);
         }
     }
 
@@ -148,10 +152,16 @@ public class BoardInputHandler : MonoBehaviour {
     {
         if (v1 == 0)
         {
-            row1[v2].GetComponent<Card>().ActivateCard();
+            if(v2 < row1.Count)
+            {
+                eventSystem.SetSelectedGameObject(row1[v2]);
+            }
         } else
         {
-            row2[v2].GetComponent<Card>().ActivateCard();
+            if(v2 < row2.Count)
+            {
+                eventSystem.SetSelectedGameObject(row2[v2]);
+            }
         }
     }
 

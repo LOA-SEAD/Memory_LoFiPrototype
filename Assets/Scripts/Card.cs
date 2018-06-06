@@ -7,6 +7,7 @@ public class Card : MonoBehaviour {
     public CardNumber cardNumber;
     public AudioClip selectSound;
     public AudioClip wallSound;
+    public SpriteRenderer hoverEffect;
 
     private float selectPitch;
 
@@ -17,6 +18,7 @@ public class Card : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        hoverEffect.enabled = false;
         memoryPairing = FindObjectOfType<MemoryPairing>();
         audioSource = this.GetComponent<AudioSource>();
         selectPitch = audioSource.pitch;
@@ -55,10 +57,12 @@ public class Card : MonoBehaviour {
     {
         PlaySelectSound();
         //Activate hover effect
+        hoverEffect.enabled = true;
     }
     public void DeselectCard()
     {
         //Deactivate hover effect
+        hoverEffect.enabled = false;
     }
     
     public void ActivateCard() {
@@ -73,8 +77,9 @@ public class Card : MonoBehaviour {
         SpriteRenderer[] cardSprites = GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sprite in cardSprites)
         {
-            sprite.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+            sprite.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);           
         }
+        //hoverEffect.color = new Color(237.0f/255.0f, 1.0f, 0.0f, 0.5f);
     }
 
     private void Flip() {
