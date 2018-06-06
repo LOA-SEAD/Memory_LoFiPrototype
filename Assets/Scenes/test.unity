@@ -172,7 +172,10 @@ MonoBehaviour:
   cardNumber: 2
   selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  contentValue: {fileID: 8300000, guid: 085f818ce31599647a49498dd4cffc7a, type: 3}
+  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 2122433730}
+  flippingTime: 0.5
 --- !u!4 &24437208
 Transform:
   m_ObjectHideFlags: 0
@@ -1423,7 +1426,10 @@ MonoBehaviour:
   cardNumber: 1
   selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  contentValue: {fileID: 8300000, guid: 32bc559e6c2b8684885101ec5857582f, type: 3}
+  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 180662841}
+  flippingTime: 0.5
 --- !u!61 &775795000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1689,7 +1695,10 @@ MonoBehaviour:
   cardNumber: 1
   selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  contentValue: {fileID: 8300000, guid: 956ad416d3332434cb2de0dbdf9365c1, type: 3}
+  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 1764010328}
+  flippingTime: 0.5
 --- !u!4 &1006826912
 Transform:
   m_ObjectHideFlags: 0
@@ -2188,7 +2197,10 @@ MonoBehaviour:
   cardNumber: 3
   selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  contentValue: {fileID: 8300000, guid: a44b7c8da0f98c74898105aeb105dec6, type: 3}
+  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 311478504}
+  flippingTime: 0.5
 --- !u!61 &1340978462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2376,7 +2388,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1399568306}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1.5, y: 1.2, z: 1}
   m_Children: []
@@ -2512,7 +2524,10 @@ MonoBehaviour:
   cardNumber: 3
   selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  contentValue: {fileID: 8300000, guid: e46d3d34161d8754085618c61e8c3620, type: 3}
+  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 1399568307}
+  flippingTime: 0.5
 --- !u!61 &1520326123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3212,7 +3227,10 @@ MonoBehaviour:
   cardNumber: 2
   selectSound: {fileID: 8300000, guid: c9f81938fabfda24087b98a64f7116e5, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  contentValue: {fileID: 8300000, guid: 7706318b3c53713468ae22f377ab4163, type: 3}
+  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 2096464898}
+  flippingTime: 0.5
 --- !u!4 &1850442659
 Transform:
   m_ObjectHideFlags: 0

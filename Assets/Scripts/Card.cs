@@ -7,8 +7,10 @@ public class Card : MonoBehaviour {
     public CardNumber cardNumber;
     public AudioClip selectSound;
     public AudioClip wallSound;
+    public AudioClip contentValue;
+    public AudioClip invalidCard;
     public SpriteRenderer hoverEffect;
-
+    public float flippingTime;
     private float selectPitch;
 
     private bool found = false;
@@ -44,11 +46,12 @@ public class Card : MonoBehaviour {
         {
             if (!found && !flipped)
             {
-                ActivateCard();
+                StartCoroutine(ActivateCard());
             }
             else
             {
                 //Play invalid card sound
+                PlayInvalidCard();
             }
         }
     }
@@ -65,8 +68,9 @@ public class Card : MonoBehaviour {
         hoverEffect.enabled = false;
     }
     
-    public void ActivateCard() {
+    public IEnumerator ActivateCard() {
         Flip();
+        yield return new WaitForSeconds(flippingTime);
         StartCoroutine(memoryPairing.ActivateCard(this));
     }
 
@@ -84,6 +88,7 @@ public class Card : MonoBehaviour {
 
     private void Flip() {
         transform.rotation = new Quaternion(0.0f, 1.0f, 0.0f, 0.0f);
+        PlayContentValue();
         flipped = true;
     }
     public void UnFlip() {
@@ -103,6 +108,20 @@ public class Card : MonoBehaviour {
     {
         audioSource.pitch = 1.0f;
         audioSource.clip = wallSound;
+        audioSource.Play();
+    }
+
+    public void PlayContentValue()
+    {
+        audioSource.pitch = 1.0f;
+        audioSource.clip = contentValue;
+        audioSource.Play();
+    }
+
+    public void PlayInvalidCard()
+    {
+        audioSource.pitch = 1.0f;
+        audioSource.clip = invalidCard;
         audioSource.Play();
     }
 }
