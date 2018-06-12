@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class BoardInputHandler : MonoBehaviour {
 
@@ -54,6 +55,10 @@ public class BoardInputHandler : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.C))
         {
             Access(2, 2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

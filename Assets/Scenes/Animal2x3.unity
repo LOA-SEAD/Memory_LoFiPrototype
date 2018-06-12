@@ -822,7 +822,6 @@ GameObject:
   - component: {fileID: 377417231}
   - component: {fileID: 377417233}
   - component: {fileID: 377417234}
-  - component: {fileID: 377417235}
   - component: {fileID: 377417237}
   m_Layer: 0
   m_Name: GameController
@@ -896,20 +895,6 @@ MonoBehaviour:
   wrongPair: {fileID: 8300000, guid: 3c03c03ed0b1508478b78ec0754bd86d, type: 3}
   allPairsFound: {fileID: 8300000, guid: 3d46d6d1bffe66247aa9d61ad214c985, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
---- !u!114 &377417235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 377417230}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e0c46519beef44ba966be6726ad679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  row1: []
-  row2: []
-  row3: []
 --- !u!82 &377417236
 AudioSource:
   m_ObjectHideFlags: 0
