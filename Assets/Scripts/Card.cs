@@ -50,14 +50,18 @@ public class Card : MonoBehaviour {
             }
             else
             {
-                //Play invalid card sound
-                PlayInvalidCard();
+                //Play removed card sound
+                PlayContentValue();
             }
         }
     }
 
     public void SelectCard()
     {
+        if(!flipped)
+        {
+
+        }
         PlaySelectSound();
         //Activate hover effect
         hoverEffect.enabled = true;
@@ -118,7 +122,7 @@ public class Card : MonoBehaviour {
         audioSource.Play();
     }
 
-    public void PlayInvalidCard()
+    public void PlayRemovedCard()
     {
         audioSource.pitch = 1.0f;
         audioSource.clip = invalidCard;
