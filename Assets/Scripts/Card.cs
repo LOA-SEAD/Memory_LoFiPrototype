@@ -60,9 +60,12 @@ public class Card : MonoBehaviour {
     {
         if(!flipped)
         {
-
+            PlaySelectSound();
         }
-        PlaySelectSound();
+        else
+        {
+            PlayRemovedCard();
+        }
         //Activate hover effect
         hoverEffect.enabled = true;
     }

@@ -7,7 +7,9 @@ public enum CardNumber {
     card1,
     card2,
     card3,
-    card4
+    card4,
+    card5,
+    card6
 }
 
 public class MemoryPairing : MonoBehaviour {

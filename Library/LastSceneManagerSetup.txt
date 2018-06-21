@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Animal2x3.unity
+- path: Assets/Scenes/Animal4x3.unity
   isLoaded: 1
   isActive: 1
