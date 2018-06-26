@@ -169,10 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97550cd9b3e21e04d82b9208b1117c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 2
+  cardNumber: 5
   selectSound: {fileID: 8300000, guid: 1eea9819b1b90d042ad88b6981446f65, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
-  contentValue: {fileID: 8300000, guid: 68e64e5a2c74fd345b1dbd39c7ade0d2, type: 3}
+  contentValue: {fileID: 8300000, guid: 03c8fe76fd801884294d29544fcbf027, type: 3}
   invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 2122433730}
   flippingTime: 0.5
@@ -594,10 +594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97550cd9b3e21e04d82b9208b1117c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 1
+  cardNumber: 4
   selectSound: {fileID: 8300000, guid: 1eea9819b1b90d042ad88b6981446f65, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
-  contentValue: {fileID: 8300000, guid: 5fe99c7ac4f29654da5377f88a1dd91c, type: 3}
+  contentValue: {fileID: 8300000, guid: 487695dc8082590448f5d6b411988eb0, type: 3}
   invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 1632868554}
   flippingTime: 0.5
@@ -680,7 +680,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 138292078}
-  m_Text: CAPIVARA
+  m_Text: VACA
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -1054,10 +1054,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97550cd9b3e21e04d82b9208b1117c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 3
+  cardNumber: 4
   selectSound: {fileID: 8300000, guid: 66216104399c4ad46a42cec1f69af4af, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
-  contentValue: {fileID: 8300000, guid: 1f77749ca49ce3345bbd8a7f15c0511d, type: 3}
+  contentValue: {fileID: 8300000, guid: 487695dc8082590448f5d6b411988eb0, type: 3}
   invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 1740200916}
   flippingTime: 0.5
@@ -1140,7 +1140,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 211281022}
-  m_Text: GATO
+  m_Text: PORCO
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -1303,7 +1303,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 302941630}
-  m_Text: GATO
+  m_Text: GIRAFA
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -1743,7 +1743,7 @@ MonoBehaviour:
   previousCard: {fileID: 0}
   currentCard: {fileID: 0}
   waitingTime: 1
-  pairsTotal: 3
+  pairsTotal: 6
   pairsFound: 0
   correctPair: {fileID: 8300000, guid: 1a3c4dcebc823134dadccba18cc42192, type: 3}
   wrongPair: {fileID: 8300000, guid: 3c03c03ed0b1508478b78ec0754bd86d, type: 3}
@@ -2213,7 +2213,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 644984084}
-  m_Text: CACHORRO
+  m_Text: GIRAFA
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -2898,7 +2898,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808101209}
-  m_Text: GATO
+  m_Text: VACA
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -3815,10 +3815,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97550cd9b3e21e04d82b9208b1117c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 3
+  cardNumber: 6
   selectSound: {fileID: 8300000, guid: 6bd745ef5b45e834baaf8f27c62e6f24, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
-  contentValue: {fileID: 8300000, guid: 1f77749ca49ce3345bbd8a7f15c0511d, type: 3}
+  contentValue: {fileID: 8300000, guid: 97a97b8276f22604f97b70b12a8f5bd3, type: 3}
   invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 311478504}
   flippingTime: 0.5
@@ -3901,7 +3901,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365753017}
-  m_Text: CACHORRO
+  m_Text: GATO
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -4275,10 +4275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97550cd9b3e21e04d82b9208b1117c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 3
+  cardNumber: 5
   selectSound: {fileID: 8300000, guid: 66216104399c4ad46a42cec1f69af4af, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
-  contentValue: {fileID: 8300000, guid: 1f77749ca49ce3345bbd8a7f15c0511d, type: 3}
+  contentValue: {fileID: 8300000, guid: 03c8fe76fd801884294d29544fcbf027, type: 3}
   invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 433481939}
   flippingTime: 0.5
@@ -4649,10 +4649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97550cd9b3e21e04d82b9208b1117c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 1
+  cardNumber: 6
   selectSound: {fileID: 8300000, guid: 1eea9819b1b90d042ad88b6981446f65, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
-  contentValue: {fileID: 8300000, guid: 5fe99c7ac4f29654da5377f88a1dd91c, type: 3}
+  contentValue: {fileID: 8300000, guid: 97a97b8276f22604f97b70b12a8f5bd3, type: 3}
   invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 372218964}
   flippingTime: 0.5
@@ -5477,10 +5477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97550cd9b3e21e04d82b9208b1117c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 2
+  cardNumber: 3
   selectSound: {fileID: 8300000, guid: 6bd745ef5b45e834baaf8f27c62e6f24, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
-  contentValue: {fileID: 8300000, guid: 68e64e5a2c74fd345b1dbd39c7ade0d2, type: 3}
+  contentValue: {fileID: 8300000, guid: 1f77749ca49ce3345bbd8a7f15c0511d, type: 3}
   invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
   hoverEffect: {fileID: 1598512719}
   flippingTime: 0.5
@@ -5563,7 +5563,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1718319009}
-  m_Text: CAPIVARA
+  m_Text: PORCO
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1

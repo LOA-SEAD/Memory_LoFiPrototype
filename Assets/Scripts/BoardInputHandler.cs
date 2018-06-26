@@ -37,12 +37,21 @@ public class BoardInputHandler : MonoBehaviour {
             Access(0, 1);
         } else if (Input.GetKeyDown(KeyCode.E)) {
             Access(0, 2);
-        } else if (Input.GetKeyDown(KeyCode.A)) {
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            Access(0, 3);
+        }
+        else if (Input.GetKeyDown(KeyCode.A)) {
             Access(1, 0);
         } else if (Input.GetKeyDown(KeyCode.S)) {
             Access(1, 1);
         } else if (Input.GetKeyDown(KeyCode.D)) {
             Access(1, 2);
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            Access(1, 3);
         }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -55,6 +64,10 @@ public class BoardInputHandler : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.C))
         {
             Access(2, 2);
+        }
+        else if (Input.GetKeyDown(KeyCode.V))
+        {
+            Access(2, 3);
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {

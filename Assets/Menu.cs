@@ -15,11 +15,11 @@ public class Menu : MonoBehaviour {
 		
 	}
 
-    public void ChangePhase(int name)
+    public void ChangePhase(int number)
     {
         try
         {
-            SceneManager.LoadScene(name);
+            SceneManager.LoadScene(number);
         }
         catch
         {
