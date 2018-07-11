@@ -9,6 +9,7 @@ public class Card : MonoBehaviour {
     public AudioClip wallSound;
     public AudioClip contentValue;
     public AudioClip invalidCard;
+    public AudioClip selectedCard;
     public SpriteRenderer hoverEffect;
     public float flippingTime;
     private float selectPitch;
@@ -50,21 +51,33 @@ public class Card : MonoBehaviour {
             }
             else
             {
-                //Play removed card sound
-                PlayContentValue();
+                //empty sound to removed cards
+                if (found){
+                    PlayRemovedCard();
+                }
+                else{
+                    PlayContentValue();
+                }
             }
         }
     }
 
     public void SelectCard()
     {
-        if(!flipped)
-        {
-            PlaySelectSound();
-        }
-        else
+        if (found)
         {
             PlayRemovedCard();
+        } 
+        else 
+        {
+            if(!flipped)
+            {
+                PlaySelectSound();
+            }
+            else
+            {
+                PlaySelectedCard();
+            }
         }
         //Activate hover effect
         hoverEffect.enabled = true;
@@ -129,6 +142,13 @@ public class Card : MonoBehaviour {
     {
         audioSource.pitch = 1.0f;
         audioSource.clip = invalidCard;
+        audioSource.Play();
+    }
+
+    public void PlaySelectedCard()
+    {
+        audioSource.pitch = selectPitch;
+        audioSource.clip = selectedCard;
         audioSource.Play();
     }
 }

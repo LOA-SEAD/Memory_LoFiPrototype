@@ -173,7 +173,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 03c8fe76fd801884294d29544fcbf027, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 2122433730}
   flippingTime: 0.5
 --- !u!4 &24437208
@@ -512,7 +513,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 1f77749ca49ce3345bbd8a7f15c0511d, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 1632868554}
   flippingTime: 0.5
 --- !u!61 &127323892
@@ -1187,10 +1189,11 @@ MonoBehaviour:
   waitingTime: 1
   pairsTotal: 4
   pairsFound: 0
-  correctPair: {fileID: 8300000, guid: 1a3c4dcebc823134dadccba18cc42192, type: 3}
-  wrongPair: {fileID: 8300000, guid: 3c03c03ed0b1508478b78ec0754bd86d, type: 3}
+  correctPair: {fileID: 8300000, guid: 25e305919514cb14a91bffd21dd9186b, type: 3}
+  wrongPair: {fileID: 8300000, guid: 6e00da2e49cd89646ada6e76d5306d8f, type: 3}
   allPairsFound: {fileID: 8300000, guid: 3d46d6d1bffe66247aa9d61ad214c985, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  backToMenu: {fileID: 8300000, guid: a26f3118d0ee3a240bb3d726c567e258, type: 3}
 --- !u!82 &377417236
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1803,7 +1806,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 1f77749ca49ce3345bbd8a7f15c0511d, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 1415031439}
   flippingTime: 0.5
 --- !u!61 &759927062
@@ -2103,7 +2107,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 5fe99c7ac4f29654da5377f88a1dd91c, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 180662841}
   flippingTime: 0.5
 --- !u!61 &775795000
@@ -2798,7 +2803,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 97a97b8276f22604f97b70b12a8f5bd3, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 311478504}
   flippingTime: 0.5
 --- !u!61 &1340978462
@@ -3258,7 +3264,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 03c8fe76fd801884294d29544fcbf027, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 372218964}
   flippingTime: 0.5
 --- !u!61 &1515363036
@@ -3786,7 +3793,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 97a97b8276f22604f97b70b12a8f5bd3, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 1598512719}
   flippingTime: 0.5
 --- !u!61 &1655499721
@@ -4382,7 +4390,8 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 5fe99c7ac4f29654da5377f88a1dd91c, type: 3}
-  invalidCard: {fileID: 8300000, guid: af5e91b82d8e98e4bbf31c7032a5764f, type: 3}
+  invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  selectedCard: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
   hoverEffect: {fileID: 2096464898}
   flippingTime: 0.5
 --- !u!4 &1850442659

@@ -71,6 +71,7 @@ public class BoardInputHandler : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
+            memoryPairing.PlayBackToMenu();
             SceneManager.LoadScene(0);
         }
     }

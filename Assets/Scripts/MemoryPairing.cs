@@ -25,6 +25,7 @@ public class MemoryPairing : MonoBehaviour {
     public AudioClip wrongPair;
     public AudioClip allPairsFound;
     public AudioClip wallSound;
+    public AudioClip backToMenu;
     AudioSource audioSource;
 
     private BoardInputHandler board;
@@ -124,6 +125,12 @@ public class MemoryPairing : MonoBehaviour {
     public void PlayWrongPair()
     {
         audioSource.clip = wrongPair;
+        audioSource.Play();
+    }
+    
+    public void PlayBackToMenu()
+    {
+        audioSource.clip = backToMenu;
         audioSource.Play();
     }
 

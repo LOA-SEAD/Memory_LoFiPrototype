@@ -3,7 +3,13 @@ guid: 97550cd9b3e21e04d82b9208b1117c77
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - selectSound: {instanceID: 0}
+  - wallSound: {instanceID: 0}
+  - contentValue: {instanceID: 0}
+  - invalidCard: {instanceID: 0}
+  - backToMenu: {fileID: 8300000, guid: a26f3118d0ee3a240bb3d726c567e258, type: 3}
+  - hoverEffect: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
