@@ -16,7 +16,11 @@ public class BoardInputHandler : MonoBehaviour {
     // Use this for initialization
     void Start () {
         eventSystem = GetComponent<EventSystem>();
-        memoryPairing = GetComponent<MemoryPairing>();
+        memoryPairing = GetComponent<MemoryPairing>();   
+        //Lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        // Hide cursor when locking
+        Cursor.visible = false;
     }
 	
 	// Update is called once per frame
@@ -72,6 +76,10 @@ public class BoardInputHandler : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             memoryPairing.PlayBackToMenu();
+            //Release cursor
+            Cursor.lockState = CursorLockMode.None;
+            //Change cursor to visible again
+            Cursor.visible = true;
             SceneManager.LoadScene(0);
         }
     }
