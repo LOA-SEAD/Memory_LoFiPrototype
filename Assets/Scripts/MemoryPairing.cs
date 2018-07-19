@@ -97,12 +97,12 @@ public class MemoryPairing : MonoBehaviour {
 
     IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f); //original: 2.0F
 
         // Play sound
         PlayAllPairsFound();
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f); //original: 1.0F
         //MainMenu();
     }
 

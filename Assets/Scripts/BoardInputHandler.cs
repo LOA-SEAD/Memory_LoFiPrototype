@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class BoardInputHandler : MonoBehaviour {
 
+    enum possibleKeyDown {Down, Up, Left, Right};
     public List<GameObject> row1;
     public List<GameObject> row2;
     public List<GameObject> row3;
@@ -14,6 +15,7 @@ public class BoardInputHandler : MonoBehaviour {
     private MemoryPairing memoryPairing;
     //To fix the problem of deselected a card
     private GameObject lastselect;
+    possibleKeyDown lastKeyDown;
 
     // Use this for initialization
     void Start () {
@@ -42,8 +44,10 @@ public class BoardInputHandler : MonoBehaviour {
             MoveUp();
         } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
             MoveDown();
-        } else if(Input.GetKeyDown(KeyCode.Space)) { //Submit
+        } else if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) { //Submit
             Submit();
+        } else if (Input.GetMouseButtonDown(0)){ //To not bug the selection system
+            eventSystem.SetSelectedGameObject(lastselect);
         } else if (Input.GetKeyDown(KeyCode.Q)) { //Direct access
             Access(0, 0);
         } else if (Input.GetKeyDown(KeyCode.W)) {
@@ -113,6 +117,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                     eventSystem.SetSelectedGameObject(null);
+                    lastKeyDown = possibleKeyDown.Down;
                 }
                 else
                 {
@@ -126,12 +131,13 @@ public class BoardInputHandler : MonoBehaviour {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                         eventSystem.SetSelectedGameObject(null);
+                        lastKeyDown = possibleKeyDown.Down;
                     }
                 }
             }
         } else
         {
-            if (row1.Contains(lastselect))
+            if (row1.Contains(lastselect) && (lastKeyDown == possibleKeyDown.Up))
             {
                 //select last card
                 eventSystem.SetSelectedGameObject(row1[row1.IndexOf(lastselect)]);
@@ -165,6 +171,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                     eventSystem.SetSelectedGameObject(null);
+                    lastKeyDown = possibleKeyDown.Up;
                 }
             }
         }
@@ -172,7 +179,7 @@ public class BoardInputHandler : MonoBehaviour {
         {
             if (row3.Count == 0)
             {
-                if (row2.Contains(lastselect))
+                if (row2.Contains(lastselect) && (lastKeyDown == possibleKeyDown.Down))
                 {
                     //select last card
                     eventSystem.SetSelectedGameObject(row2[row2.IndexOf(lastselect)]);
@@ -185,7 +192,7 @@ public class BoardInputHandler : MonoBehaviour {
             }
             else
             {
-                if (row3.Contains(lastselect))
+                if (row3.Contains(lastselect) && (lastKeyDown == possibleKeyDown.Down))
                 {
                     //select last card
                     eventSystem.SetSelectedGameObject(row3[row3.IndexOf(lastselect)]);
@@ -213,6 +220,7 @@ public class BoardInputHandler : MonoBehaviour {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                         eventSystem.SetSelectedGameObject(null);
+                        lastKeyDown = possibleKeyDown.Left;
                     }
                     else
                     {
@@ -230,6 +238,7 @@ public class BoardInputHandler : MonoBehaviour {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                         eventSystem.SetSelectedGameObject(null);
+                        lastKeyDown = possibleKeyDown.Left;
                     }
                     else
                     {
@@ -247,6 +256,7 @@ public class BoardInputHandler : MonoBehaviour {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                         eventSystem.SetSelectedGameObject(null);
+                        lastKeyDown = possibleKeyDown.Left;
                     }
                     else
                     {
@@ -262,7 +272,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //get the index of card
                     int cardIndex = row1.IndexOf(lastselect);
 
-                    if (cardIndex != row1.Count - 1)
+                    if ((cardIndex != row1.Count - 1) || (lastKeyDown != possibleKeyDown.Right))
                     {
                         //play wall sound
                         lastselect.GetComponent<Card>().PlayWallSound();
@@ -278,7 +288,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //get the index of card
                     int cardIndex = row2.IndexOf(lastselect);
 
-                    if (cardIndex != row2.Count - 1)
+                    if ((cardIndex != row2.Count - 1) || (lastKeyDown != possibleKeyDown.Right))
                     {
                         //play wall sound
                         lastselect.GetComponent<Card>().PlayWallSound();
@@ -294,7 +304,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //get the index of card
                     int cardIndex = row3.IndexOf(lastselect);
 
-                    if (cardIndex != row3.Count - 1)
+                    if ((cardIndex != row3.Count - 1) || (lastKeyDown != possibleKeyDown.Right))
                     {
                         //play wall sound
                         lastselect.GetComponent<Card>().PlayWallSound();
@@ -322,6 +332,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                     eventSystem.SetSelectedGameObject(null);
+                    lastKeyDown = possibleKeyDown.Right;
                 }
                 else
                 {
@@ -339,6 +350,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                     eventSystem.SetSelectedGameObject(null);
+                    lastKeyDown = possibleKeyDown.Right;
                 }
                 else
                 {
@@ -356,6 +368,7 @@ public class BoardInputHandler : MonoBehaviour {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
                     eventSystem.SetSelectedGameObject(null);
+                    lastKeyDown = possibleKeyDown.Right;
                 }
                 else
                 {
@@ -371,7 +384,7 @@ public class BoardInputHandler : MonoBehaviour {
                 //get the index of card
                 int cardIndex = row1.IndexOf(lastselect);
 
-                if (cardIndex != 0)
+                if ((cardIndex != 0) || (lastKeyDown != possibleKeyDown.Left))
                 {
                     //play wall sound
                     lastselect.GetComponent<Card>().PlayWallSound();
@@ -387,7 +400,7 @@ public class BoardInputHandler : MonoBehaviour {
                 //get the index of card
                 int cardIndex = row2.IndexOf(lastselect);
 
-                if (cardIndex != 0)
+                if ((cardIndex != 0) || (lastKeyDown != possibleKeyDown.Left))
                 {
                     //play wall sound
                     lastselect.GetComponent<Card>().PlayWallSound();
@@ -403,7 +416,7 @@ public class BoardInputHandler : MonoBehaviour {
                 //get the index of card
                 int cardIndex = row3.IndexOf(lastselect);
 
-                if (cardIndex != 0)
+                if ((cardIndex != 0) || (lastKeyDown != possibleKeyDown.Left))
                 {
                     //play wall sound
                     lastselect.GetComponent<Card>().PlayWallSound();

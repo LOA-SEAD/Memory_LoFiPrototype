@@ -881,7 +881,7 @@ MonoBehaviour:
   pairsFound: 0
   correctPair: {fileID: 8300000, guid: 25e305919514cb14a91bffd21dd9186b, type: 3}
   wrongPair: {fileID: 8300000, guid: 6e00da2e49cd89646ada6e76d5306d8f, type: 3}
-  allPairsFound: {fileID: 8300000, guid: 3d46d6d1bffe66247aa9d61ad214c985, type: 3}
+  allPairsFound: {fileID: 8300000, guid: 275863a5b33d9944d8e2e55b0db11065, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   backToMenu: {fileID: 8300000, guid: a26f3118d0ee3a240bb3d726c567e258, type: 3}
 --- !u!114 &377417235
