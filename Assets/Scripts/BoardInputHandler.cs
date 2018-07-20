@@ -15,7 +15,16 @@ public class BoardInputHandler : MonoBehaviour {
     private MemoryPairing memoryPairing;
     //To fix the problem of deselected a card
     private GameObject lastselect;
-    possibleKeyDown lastKeyDown;
+    private possibleKeyDown lastKeyDown;
+    //Location audios
+    public AudioClip linha1;
+    public AudioClip linha2;
+    public AudioClip linha3;
+    public AudioClip coluna1;
+    public AudioClip coluna2;
+    public AudioClip coluna3;
+    public AudioClip coluna4;
+    private int cardIndex;
 
     // Use this for initialization
     void Start () {
@@ -86,6 +95,10 @@ public class BoardInputHandler : MonoBehaviour {
         {
             Access(2, 3);
         }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            PlayerLocation();
+        }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             memoryPairing.PlayBackToMenu();
@@ -98,7 +111,15 @@ public class BoardInputHandler : MonoBehaviour {
     }
 
     private void Submit() {
-        eventSystem.currentSelectedGameObject.GetComponent<Card>().TrySubmit();
+        if (eventSystem.currentSelectedGameObject == null)
+        {
+            //play wall sound
+            lastselect.GetComponent<Card>().PlayWallSound();
+        }
+        else
+        {
+            eventSystem.currentSelectedGameObject.GetComponent<Card>().TrySubmit();
+        }
     }
 
     private void MoveDown()
@@ -455,6 +476,51 @@ public class BoardInputHandler : MonoBehaviour {
                 }
                 break;
         }
+    }
+
+    private void PlayerLocation()
+    {
+        if (eventSystem.currentSelectedGameObject == null)
+        {
+            //Wall Sound if player is in the wall
+            lastselect.GetComponent<Card>().PlayWallSound();
+        }
+        else
+        {
+            //Get the line of the card and get the index column of card
+            if (row1.Contains(eventSystem.currentSelectedGameObject))
+            {
+                memoryPairing.PlayLineCard(linha1);
+                cardIndex = row1.IndexOf(eventSystem.currentSelectedGameObject);
+            }
+            else if (row2.Contains(eventSystem.currentSelectedGameObject))
+            {
+                memoryPairing.PlayLineCard(linha2);
+                cardIndex = row2.IndexOf(eventSystem.currentSelectedGameObject);
+            }
+            else
+            {
+                memoryPairing.PlayLineCard(linha3);
+                cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
+            }
+            //Get the column of the card
+            if (cardIndex == 0)
+            {
+                StartCoroutine(memoryPairing.PlayColumnCard(coluna1));
+            }
+            else if (cardIndex == 1)
+            {
+                StartCoroutine(memoryPairing.PlayColumnCard(coluna2));
+            }
+            else if (cardIndex == 2)
+            {
+                StartCoroutine(memoryPairing.PlayColumnCard(coluna3));
+            }
+            else
+            {
+                StartCoroutine(memoryPairing.PlayColumnCard(coluna4));
+            }
+        }    
     }
 
     // Handles OnMove events

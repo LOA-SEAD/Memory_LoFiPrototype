@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum CardNumber {
     none,
@@ -102,8 +103,13 @@ public class MemoryPairing : MonoBehaviour {
         // Play sound
         PlayAllPairsFound();
 
-        yield return new WaitForSeconds(0.5f); //original: 1.0F
+        yield return new WaitForSeconds(allPairsFound.length + 1.0f); //original: 1.0F
+        //Release cursor
+        Cursor.lockState = CursorLockMode.None;
+        //Change cursor to visible again
+        Cursor.visible = true;
         //MainMenu();
+        SceneManager.LoadScene(0);
     }
 
     #endregion
@@ -131,6 +137,20 @@ public class MemoryPairing : MonoBehaviour {
     public void PlayBackToMenu()
     {
         audioSource.clip = backToMenu;
+        audioSource.Play();
+    }
+
+    public void PlayLineCard(AudioClip line)
+    {
+        audioSource.clip = line;
+        audioSource.Play();
+    }
+
+    public IEnumerator PlayColumnCard(AudioClip column)
+    {
+        //Timer to not overlap the line audio 
+        yield return new WaitForSeconds(1.5f);
+        audioSource.clip = column;
         audioSource.Play();
     }
 
