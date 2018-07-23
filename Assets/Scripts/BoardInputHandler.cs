@@ -95,7 +95,7 @@ public class BoardInputHandler : MonoBehaviour {
         {
             Access(2, 3);
         }
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.J))
         {
             PlayerLocation();
         }

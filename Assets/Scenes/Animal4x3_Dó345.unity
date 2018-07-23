@@ -1753,6 +1753,9 @@ MonoBehaviour:
   allPairsFound: {fileID: 8300000, guid: 275863a5b33d9944d8e2e55b0db11065, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   backToMenu: {fileID: 8300000, guid: a26f3118d0ee3a240bb3d726c567e258, type: 3}
+  orientationLevel: {fileID: 8300000, guid: a695ff02c24c9f944b0574a12e37d404, type: 3}
+  orientationCongratulations: {fileID: 8300000, guid: a8c4b4777b1388941af0ff8b6d310b5d,
+    type: 3}
 --- !u!82 &377417236
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5057,7 +5060,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0.20911945, b: 0.5377358, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0.3137255, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

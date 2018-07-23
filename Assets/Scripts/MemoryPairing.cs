@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public enum CardNumber {
@@ -18,6 +19,7 @@ public class MemoryPairing : MonoBehaviour {
     public Card previousCard;
     public Card currentCard;
     public float waitingTime;
+    private EventSystem eventSystem;
 
     public int pairsTotal;
     public int pairsFound;
@@ -27,18 +29,26 @@ public class MemoryPairing : MonoBehaviour {
     public AudioClip allPairsFound;
     public AudioClip wallSound;
     public AudioClip backToMenu;
+    public AudioClip orientationLevel;
+    public AudioClip orientationCongratulations;
     AudioSource audioSource;
 
     private BoardInputHandler board;
+
+    //Function executed before Start()
+    void Awake(){
+        audioSource = this.GetComponent<AudioSource>();
+        board = this.GetComponent<BoardInputHandler>();
+        canSelect = false;
+        eventSystem = GetComponent<EventSystem>();
+        triggerOrientations(orientationLevel);
+    }
 
 	// Use this for initialization
 	void Start ()
     {
         canSelect = true;
         previousCard = null;
-        audioSource = this.GetComponent<AudioSource>();
-        board = this.GetComponent<BoardInputHandler>();
-
     }
 
     #region Memory Game logics
@@ -103,13 +113,22 @@ public class MemoryPairing : MonoBehaviour {
         // Play sound
         PlayAllPairsFound();
 
-        yield return new WaitForSeconds(allPairsFound.length + 1.0f); //original: 1.0F
+        yield return new WaitForSeconds(allPairsFound.length + 0.2f); //original: 1.0F
+
+        // Play orientation
+        PlayOrientationCongratulations();
+
+        yield return new WaitForSeconds(orientationCongratulations.length + 0.5f); //original: 1.0F
         //Release cursor
         Cursor.lockState = CursorLockMode.None;
         //Change cursor to visible again
         Cursor.visible = true;
         //MainMenu();
         SceneManager.LoadScene(0);
+    }
+
+    public void triggerOrientations(AudioClip orientation){
+        StartCoroutine(ReadOrientations(orientation));
     }
 
     #endregion
@@ -125,6 +144,12 @@ public class MemoryPairing : MonoBehaviour {
     public void PlayAllPairsFound()
     {
         audioSource.clip = allPairsFound;
+        audioSource.Play();
+    }
+
+    public void PlayOrientationCongratulations()
+    {
+        audioSource.clip = orientationCongratulations;
         audioSource.Play();
     }
 
@@ -152,6 +177,19 @@ public class MemoryPairing : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
         audioSource.clip = column;
         audioSource.Play();
+    }
+
+    //Stop the Event System and read the level's orientation
+    public IEnumerator ReadOrientations(AudioClip orientation)
+    {
+        board.enabled = false;
+        eventSystem.enabled = false;
+        audioSource.clip = orientation;
+        audioSource.Play();
+        yield return new WaitForSeconds(orientation.length + 0.3f);
+        eventSystem.enabled = true;
+        eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+        board.enabled = true;
     }
 
     #endregion
