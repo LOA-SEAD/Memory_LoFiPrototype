@@ -137,7 +137,7 @@ public class BoardInputHandler : MonoBehaviour {
                 {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
+                    //eventSystem.SetSelectedGameObject(null);
                     lastKeyDown = possibleKeyDown.Down;
                 }
                 else
@@ -151,7 +151,7 @@ public class BoardInputHandler : MonoBehaviour {
                     {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
+                        //eventSystem.SetSelectedGameObject(null);
                         lastKeyDown = possibleKeyDown.Down;
                     }
                 }
@@ -191,7 +191,7 @@ public class BoardInputHandler : MonoBehaviour {
                 {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
+                    //eventSystem.SetSelectedGameObject(null);
                     lastKeyDown = possibleKeyDown.Up;
                 }
             }
@@ -240,7 +240,7 @@ public class BoardInputHandler : MonoBehaviour {
                     {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
+                        //eventSystem.SetSelectedGameObject(null);
                         lastKeyDown = possibleKeyDown.Left;
                     }
                     else
@@ -258,7 +258,7 @@ public class BoardInputHandler : MonoBehaviour {
                     {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
+                        //eventSystem.SetSelectedGameObject(null);
                         lastKeyDown = possibleKeyDown.Left;
                     }
                     else
@@ -276,7 +276,7 @@ public class BoardInputHandler : MonoBehaviour {
                     {
                         //play wall sound and deselect the card
                         eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
+                        //eventSystem.SetSelectedGameObject(null);
                         lastKeyDown = possibleKeyDown.Left;
                     }
                     else
@@ -352,7 +352,7 @@ public class BoardInputHandler : MonoBehaviour {
                 {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
+                    //eventSystem.SetSelectedGameObject(null);
                     lastKeyDown = possibleKeyDown.Right;
                 }
                 else
@@ -370,7 +370,7 @@ public class BoardInputHandler : MonoBehaviour {
                 {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
+                    //eventSystem.SetSelectedGameObject(null);
                     lastKeyDown = possibleKeyDown.Right;
                 }
                 else
@@ -388,7 +388,7 @@ public class BoardInputHandler : MonoBehaviour {
                 {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
+                    //eventSystem.SetSelectedGameObject(null);
                     lastKeyDown = possibleKeyDown.Right;
                 }
                 else
