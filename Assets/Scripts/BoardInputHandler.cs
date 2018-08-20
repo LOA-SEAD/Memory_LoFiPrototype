@@ -31,10 +31,6 @@ public class BoardInputHandler : MonoBehaviour {
         eventSystem = GetComponent<EventSystem>();
         memoryPairing = GetComponent<MemoryPairing>();  
         lastselect = new GameObject(); 
-        //Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        // Hide cursor when locking
-        Cursor.visible = false;
     }
 	
 	// Update is called once per frame

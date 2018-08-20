@@ -31,7 +31,8 @@ public class MemoryPairing : MonoBehaviour {
     public AudioClip backToMenu;
     public AudioClip orientationLevel;
     public AudioClip orientationCongratulations;
-    AudioSource audioSource;
+    AudioSource audioSource;  
+    private bool isPlayingOrientation = true;
 
     private BoardInputHandler board;
 
@@ -41,6 +42,10 @@ public class MemoryPairing : MonoBehaviour {
         board = this.GetComponent<BoardInputHandler>();
         canSelect = false;
         eventSystem = GetComponent<EventSystem>();
+        //Lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        // Hide cursor when locking
+        Cursor.visible = false;
         triggerOrientations(orientationLevel);
     }
 
@@ -49,6 +54,22 @@ public class MemoryPairing : MonoBehaviour {
     {
         canSelect = true;
         previousCard = null;
+    }
+
+    void Update () {
+        //Pause orientation and start the level
+        if(Input.GetKeyDown(KeyCode.K) && (isPlayingOrientation)) {  //Moving
+            audioSource.Stop();
+            isPlayingOrientation = false;
+            StartCoroutine(StartLevel());
+        }
+    }
+
+    IEnumerator StartLevel(){
+        yield return new WaitForSeconds(0.5f);
+        eventSystem.enabled = true;
+        eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+        board.enabled = true;
     }
 
     #region Memory Game logics
@@ -186,10 +207,11 @@ public class MemoryPairing : MonoBehaviour {
         eventSystem.enabled = false;
         audioSource.clip = orientation;
         audioSource.Play();
-        yield return new WaitForSeconds(orientation.length + 0.3f);
-        eventSystem.enabled = true;
-        eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
-        board.enabled = true;
+        yield return new WaitForSeconds(orientation.length);
+        if (isPlayingOrientation){
+            isPlayingOrientation = false;
+            StartCoroutine(StartLevel());
+        }
     }
 
     #endregion

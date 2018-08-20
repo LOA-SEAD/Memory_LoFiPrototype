@@ -101,7 +101,8 @@ public class Card : MonoBehaviour {
         SpriteRenderer[] cardSprites = GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sprite in cardSprites)
         {
-            sprite.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);           
+            //sprite.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);    
+            sprite.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);        
         }
         //hoverEffect.color = new Color(237.0f/255.0f, 1.0f, 0.0f, 0.5f);
     }
