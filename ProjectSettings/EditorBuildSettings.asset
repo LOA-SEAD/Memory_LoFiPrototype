@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Capitais4x3.unity
     guid: d680c13078fdebf448cb4c8e0bbd5370
+  - enabled: 1
+    path: Assets/Scenes/AfterLevelMenu.unity
+    guid: e3d2f6f6a1c65c147a2623737658278e
   - enabled: 0
     path: "Assets/Scenes/Animal3x2_D\xF3345.unity"
     guid: 7954d8930d5c4014d9e7db31ffc3fe2f

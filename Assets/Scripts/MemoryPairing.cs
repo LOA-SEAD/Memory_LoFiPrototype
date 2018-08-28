@@ -36,6 +36,8 @@ public class MemoryPairing : MonoBehaviour {
 
     private BoardInputHandler board;
 
+    public static int lastLevel;
+
     //Function executed before Start()
     void Awake(){
         audioSource = this.GetComponent<AudioSource>();
@@ -129,7 +131,7 @@ public class MemoryPairing : MonoBehaviour {
 
     IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(1.0f); //original: 2.0F
+        yield return new WaitForSeconds(correctPair.length + 1.0f); //original: 2.0F / last value: 1.0F
 
         // Play sound
         PlayAllPairsFound();
@@ -144,8 +146,19 @@ public class MemoryPairing : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         //Change cursor to visible again
         Cursor.visible = true;
-        //MainMenu();
-        SceneManager.LoadScene(0);
+        //Player can choice to go to next level or to main menu in the first and second levels
+        if (SceneManager.GetActiveScene().buildIndex != 3)
+        {
+        	//Get the index of level played
+        	lastLevel = SceneManager.GetActiveScene().buildIndex;
+        	//AfterLevelMenu()
+        	SceneManager.LoadScene(4);
+        }
+        else
+        {
+	        //MainMenu();
+	        SceneManager.LoadScene(0);
+	    }
     }
 
     public void triggerOrientations(AudioClip orientation){
@@ -153,6 +166,12 @@ public class MemoryPairing : MonoBehaviour {
     }
 
     #endregion
+
+    /*#region After Level Menu logics
+    public int getLastLevelIndex(){
+    	return lastLevel;
+    }
+    #endregion*/
 
 
     #region Play sound methods

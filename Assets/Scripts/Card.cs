@@ -76,7 +76,7 @@ public class Card : MonoBehaviour {
             }
             else
             {
-                PlaySelectedCard();
+                StartCoroutine(PlaySelectedCard());
             }
         }
         //Activate hover effect
@@ -146,10 +146,12 @@ public class Card : MonoBehaviour {
         audioSource.Play();
     }
 
-    public void PlaySelectedCard()
+    public IEnumerator PlaySelectedCard()
     {
         audioSource.pitch = selectPitch;
         audioSource.clip = selectedCard;
         audioSource.Play();
+        yield return new WaitForSeconds(selectedCard.length + 0.2f);
+        PlayContentValue();
     }
 }
