@@ -51,7 +51,6 @@ public class AfterLevelMenu : MonoBehaviour {
         try
         {
         	if (number > 0){
-        		Debug.Log(MemoryPairing.lastLevel);
             	SceneManager.LoadScene(MemoryPairing.lastLevel + number);
         	}
         	else
