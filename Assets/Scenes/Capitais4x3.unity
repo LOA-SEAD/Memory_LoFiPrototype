@@ -1756,7 +1756,11 @@ MonoBehaviour:
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   backToMenu: {fileID: 8300000, guid: a26f3118d0ee3a240bb3d726c567e258, type: 3}
   orientationLevel: {fileID: 8300000, guid: 32f9781f55c952849bf15f1fe1d2c7bd, type: 3}
+  orientationLevelKeyK: {fileID: 8300000, guid: 3367918591c835b48bb143d3ef1b2c55,
+    type: 3}
   orientationCongratulations: {fileID: 8300000, guid: b378e0e1bcd003d419231f3c40192ec0,
+    type: 3}
+  orientationCongratulations2: {fileID: 8300000, guid: 2225740551cc4d548858c56b8d39cc60,
     type: 3}
 --- !u!82 &377417236
 AudioSource:

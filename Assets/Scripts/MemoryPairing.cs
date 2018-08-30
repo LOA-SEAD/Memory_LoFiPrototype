@@ -30,7 +30,9 @@ public class MemoryPairing : MonoBehaviour {
     public AudioClip wallSound;
     public AudioClip backToMenu;
     public AudioClip orientationLevel;
+    public AudioClip orientationLevelKeyK;
     public AudioClip orientationCongratulations;
+    public AudioClip orientationCongratulations2;
     AudioSource audioSource;  
     private bool isPlayingOrientation = true;
 
@@ -138,10 +140,15 @@ public class MemoryPairing : MonoBehaviour {
 
         yield return new WaitForSeconds(allPairsFound.length + 0.2f); //original: 1.0F
 
-        // Play orientation
-        PlayOrientationCongratulations();
+        // Play congratulations
+        PlayOrientationCongratulations(orientationCongratulations);
+        yield return new WaitForSeconds(orientationCongratulations.length + 0.1f); //original: 1.0F
+        if (SceneManager.GetActiveScene().buildIndex != 3)
+        {
+        	PlayOrientationCongratulations(orientationCongratulations2);
+        	yield return new WaitForSeconds(orientationCongratulations2.length + 0.5f); //original: 1.0F
+    	}
 
-        yield return new WaitForSeconds(orientationCongratulations.length + 0.5f); //original: 1.0F
         //Release cursor
         Cursor.lockState = CursorLockMode.None;
         //Change cursor to visible again
@@ -187,9 +194,9 @@ public class MemoryPairing : MonoBehaviour {
         audioSource.Play();
     }
 
-    public void PlayOrientationCongratulations()
+    public void PlayOrientationCongratulations(AudioClip orientationEndLevel)
     {
-        audioSource.clip = orientationCongratulations;
+        audioSource.clip = orientationEndLevel;
         audioSource.Play();
     }
 
@@ -226,7 +233,12 @@ public class MemoryPairing : MonoBehaviour {
         eventSystem.enabled = false;
         audioSource.clip = orientation;
         audioSource.Play();
-        yield return new WaitForSeconds(orientation.length);
+        yield return new WaitForSeconds(orientation.length + 0.1f);
+        if (isPlayingOrientation){
+        	audioSource.clip = orientationLevelKeyK;
+        	audioSource.Play();
+        	yield return new WaitForSeconds(orientationLevelKeyK.length + 0.1f);
+    	}
         if (isPlayingOrientation){
             isPlayingOrientation = false;
             StartCoroutine(StartLevel());

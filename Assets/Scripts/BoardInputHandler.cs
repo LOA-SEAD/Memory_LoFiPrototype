@@ -133,7 +133,7 @@ public class BoardInputHandler : MonoBehaviour {
                 {
                     //play wall sound and deselect the card
                     eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
+                    //eventSystem.SetSelectedGameObject(null);
                     lastKeyDown = possibleKeyDown.Down;
                 }
                 else

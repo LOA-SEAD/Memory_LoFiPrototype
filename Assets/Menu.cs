@@ -10,8 +10,12 @@ public class Menu : MonoBehaviour {
 	private GameObject lastselect;
 	private EventSystem eventSystem;
     public AudioClip orientationMenu;
+    public AudioClip orientationMenu2;
     public AudioClip orientationInstrucions;
+    public AudioClip orientationInstrucions2;
+    public AudioClip orientationInstrucions3;
     public AudioClip emptySound;
+    public AudioClip selectedSound;
     private static bool started = false;
     AudioSource audioSource;
 
@@ -70,9 +74,21 @@ public class Menu : MonoBehaviour {
         if (lastselect != null){
             audioSource.clip = emptySound;
             audioSource.Play();
+            yield return new WaitForSeconds(emptySound.length + 0.1f);
+            audioSource.clip = orientationInstrucions2;
+            audioSource.Play();
+            yield return new WaitForSeconds(orientationInstrucions2.length + 0.1f);
+            audioSource.clip = selectedSound;
+            audioSource.Play();
+            yield return new WaitForSeconds(selectedSound.length + 0.1f);
+            audioSource.clip = orientationInstrucions3;
+            audioSource.Play();
+            yield return new WaitForSeconds(orientationInstrucions3.length + 0.2f);
         }
         else{
-            yield return new WaitForSeconds(0.4f);
+            audioSource.clip = orientationMenu2;
+            audioSource.Play();
+            yield return new WaitForSeconds(orientationMenu2.length + 0.4f);
             eventSystem.enabled = true;
             eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
         }
