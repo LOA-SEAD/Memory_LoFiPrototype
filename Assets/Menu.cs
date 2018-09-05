@@ -62,14 +62,13 @@ public class Menu : MonoBehaviour {
     }
 
     public void quit()
-
     {
         Application.Quit();
 
     }
 
-//Stop the Event System and read an orientation
-public IEnumerator ReadOrientations(AudioClip orientation)
+    //Stop the Event System and read an orientation
+    public IEnumerator ReadOrientations(AudioClip orientation)
     {
         //Start of game
         if (lastselect == null){
