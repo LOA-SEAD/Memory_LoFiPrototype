@@ -29,16 +29,19 @@ public class MemoryPairing : MonoBehaviour {
     public AudioClip allPairsFound;
     public AudioClip wallSound;
     public AudioClip backToMenu;
-    public AudioClip orientationLevel;
-    public AudioClip orientationLevelKeyK;
-    public AudioClip orientationCongratulations;
+    public AudioClip[] orientationsLevel = new AudioClip[7];
+    public int indexOrientations;
+    public AudioClip orientationCongratulations1;
     public AudioClip orientationCongratulations2;
+    public AudioClip orientationCongratulationsAfterLevel;
+    public AudioClip orientationCongratulationsGameFinished;
     AudioSource audioSource;  
     private bool isPlayingOrientation = true;
 
     private BoardInputHandler board;
 
     public static int lastLevel;
+    public static bool gameActive = false;
 
     //Function executed before Start()
     void Awake(){
@@ -50,7 +53,8 @@ public class MemoryPairing : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         // Hide cursor when locking
         Cursor.visible = false;
-        triggerOrientations(orientationLevel);
+        //triggerOrientations(orientationThemeLevel);
+        triggerOrientations();
     }
 
 	// Use this for initialization
@@ -65,6 +69,7 @@ public class MemoryPairing : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.K) && (isPlayingOrientation)) {  //Moving
             audioSource.Stop();
             isPlayingOrientation = false;
+            gameActive = true;
             StartCoroutine(StartLevel());
         }
     }
@@ -97,16 +102,18 @@ public class MemoryPairing : MonoBehaviour {
             {
                 WrongPair();
             }
+
+            if(pairsFound == pairsTotal)
+            {
+            	gameActive = false;
+                StartCoroutine(EndGame());
+            }
+
             canSelect = true;
             board.enabled = true;
 
             previousCard = null;
             currentCard = null;
-
-            if(pairsFound == pairsTotal)
-            {
-                StartCoroutine(EndGame());
-            }
         }
     }
 
@@ -141,12 +148,21 @@ public class MemoryPairing : MonoBehaviour {
         yield return new WaitForSeconds(allPairsFound.length + 0.2f); //original: 1.0F
 
         // Play congratulations
-        PlayOrientationCongratulations(orientationCongratulations);
-        yield return new WaitForSeconds(orientationCongratulations.length + 0.1f); //original: 1.0F
+        PlayOrientationCongratulations(orientationCongratulations1);
+        yield return new WaitForSeconds(orientationCongratulations1.length + 0.1f); //original: 1.0F
+        PlayOrientationCongratulations(orientationCongratulations2);
+        yield return new WaitForSeconds(orientationCongratulations2.length + 0.1f); //original: 1.0F
+        //Choose go to next level or to main menu
         if (SceneManager.GetActiveScene().buildIndex != 3)
         {
-        	PlayOrientationCongratulations(orientationCongratulations2);
-        	yield return new WaitForSeconds(orientationCongratulations2.length + 0.5f); //original: 1.0F
+        	PlayOrientationCongratulations(orientationCongratulationsAfterLevel);
+        	yield return new WaitForSeconds(orientationCongratulationsAfterLevel.length + 0.5f); //original: 1.0F
+    	}
+    	//Game finished
+    	else
+    	{
+    		PlayOrientationCongratulations(orientationCongratulationsGameFinished);
+        	yield return new WaitForSeconds(orientationCongratulationsGameFinished.length + 0.5f); //original: 1.0F
     	}
 
         //Release cursor
@@ -168,8 +184,8 @@ public class MemoryPairing : MonoBehaviour {
 	    }
     }
 
-    public void triggerOrientations(AudioClip orientation){
-        StartCoroutine(ReadOrientations(orientation));
+    public void triggerOrientations(){
+        StartCoroutine(ReadOrientations());
     }
 
     #endregion
@@ -227,22 +243,27 @@ public class MemoryPairing : MonoBehaviour {
     }
 
     //Stop the Event System and read the level's orientation
-    public IEnumerator ReadOrientations(AudioClip orientation)
+    public IEnumerator ReadOrientations()
     {
         board.enabled = false;
         eventSystem.enabled = false;
-        audioSource.clip = orientation;
-        audioSource.Play();
-        yield return new WaitForSeconds(orientation.length + 0.1f);
-        if (isPlayingOrientation){
-        	audioSource.clip = orientationLevelKeyK;
-        	audioSource.Play();
-        	yield return new WaitForSeconds(orientationLevelKeyK.length + 0.1f);
+        indexOrientations = 0;
+        while (isPlayingOrientation && (indexOrientations < orientationsLevel.Length)){
+        	PlayNewOrientations(orientationsLevel[indexOrientations]);
+        	yield return new WaitForSeconds(orientationsLevel[indexOrientations].length + 0.1f);
+        	indexOrientations++;
     	}
         if (isPlayingOrientation){
             isPlayingOrientation = false;
+            gameActive = true;
             StartCoroutine(StartLevel());
         }
+    }
+
+    public void PlayNewOrientations(AudioClip orientation)
+    {
+        audioSource.clip = orientation;
+        audioSource.Play();
     }
 
     #endregion

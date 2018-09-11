@@ -263,13 +263,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientationMenu: {fileID: 8300000, guid: 321a45909be0f714b90bed768205c110, type: 3}
-  orientationMenu2: {fileID: 8300000, guid: 1f92180cf7dccaf43be1bd53da948332, type: 3}
-  orientationInstrucions: {fileID: 8300000, guid: 244d61521b26c03458b226d1e7422966,
+  orientationInstrucions1: {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff,
     type: 3}
   orientationInstrucions2: {fileID: 8300000, guid: 9d79fa3a8a2f1f74aa9c78daceb83d23,
     type: 3}
   orientationInstrucions3: {fileID: 8300000, guid: c225e2b6ef1218c4d97010e6bfb738b3,
     type: 3}
+  orientationInstrucions4: {fileID: 8300000, guid: 5fdcdc518000459459bf9c6903523558,
+    type: 3}
+  orientationInstrucions5: {fileID: 8300000, guid: 30db45a5cfe779246b1b6dbc604d97ce,
+    type: 3}
+  orientationInstrucions6: {fileID: 8300000, guid: bf896ffa7c60d02458ca16ed882af8d7,
+    type: 3}
+  orientationInstrucions7: {fileID: 8300000, guid: 2f20b833b98231d4eafb605d361047a8,
+    type: 3}
+  edgeSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   emptySound: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
   selectedSound: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
 --- !u!82 &377417236
@@ -2160,7 +2168,7 @@ MonoBehaviour:
           m_MethodName: triggerOrientations
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 244d61521b26c03458b226d1e7422966,
+            m_ObjectArgument: {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff,
               type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 4
@@ -2326,7 +2334,7 @@ MonoBehaviour:
         m_MethodName: triggerOrientations
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 244d61521b26c03458b226d1e7422966,
+          m_ObjectArgument: {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 1

@@ -10,10 +10,14 @@ public class Menu : MonoBehaviour {
 	private GameObject lastselect;
 	private EventSystem eventSystem;
     public AudioClip orientationMenu;
-    public AudioClip orientationMenu2;
-    public AudioClip orientationInstrucions;
+    public AudioClip orientationInstrucions1;
     public AudioClip orientationInstrucions2;
     public AudioClip orientationInstrucions3;
+    public AudioClip orientationInstrucions4;
+    public AudioClip orientationInstrucions5;
+    public AudioClip orientationInstrucions6;
+    public AudioClip orientationInstrucions7;
+    public AudioClip edgeSound;
     public AudioClip emptySound;
     public AudioClip selectedSound;
     private static bool started = false;
@@ -76,28 +80,38 @@ public class Menu : MonoBehaviour {
         }
         audioSource.clip = orientation;
         audioSource.Play();
-        yield return new WaitForSeconds(orientation.length + 0.1f);
         if (lastselect != null){
-            audioSource.clip = emptySound;
-            audioSource.Play();
-            yield return new WaitForSeconds(emptySound.length + 0.1f);
-            audioSource.clip = orientationInstrucions2;
-            audioSource.Play();
+            yield return new WaitForSeconds(orientation.length + 0.1f);
+            PlayNewOrientations(edgeSound);
+            yield return new WaitForSeconds(edgeSound.length + 0.1f);
+            PlayNewOrientations(orientationInstrucions2);
             yield return new WaitForSeconds(orientationInstrucions2.length + 0.1f);
-            audioSource.clip = selectedSound;
-            audioSource.Play();
+            PlayNewOrientations(orientationInstrucions3);
+            yield return new WaitForSeconds(orientationInstrucions3.length + 0.1f);
+            PlayNewOrientations(orientationInstrucions4);
+            yield return new WaitForSeconds(orientationInstrucions4.length + 0.1f);
+            PlayNewOrientations(emptySound);
+            yield return new WaitForSeconds(emptySound.length + 0.1f);
+            PlayNewOrientations(orientationInstrucions5);
+            yield return new WaitForSeconds(orientationInstrucions5.length + 0.1f);
+            PlayNewOrientations(selectedSound);
             yield return new WaitForSeconds(selectedSound.length + 0.1f);
-            audioSource.clip = orientationInstrucions3;
-            audioSource.Play();
-            yield return new WaitForSeconds(orientationInstrucions3.length + 0.2f);
+            PlayNewOrientations(orientationInstrucions6);
+            yield return new WaitForSeconds(orientationInstrucions6.length + 0.1f);
+            PlayNewOrientations(orientationInstrucions7);
+            yield return new WaitForSeconds(orientationInstrucions7.length + 0.2f);
         }
         else{
-            audioSource.clip = orientationMenu2;
-            audioSource.Play();
-            yield return new WaitForSeconds(orientationMenu2.length + 0.4f);
+            yield return new WaitForSeconds(orientation.length + 0.4f);
             eventSystem.enabled = true;
             eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
         }
+    }
+
+    public void PlayNewOrientations(AudioClip orientation)
+    {
+        audioSource.clip = orientation;
+        audioSource.Play();
     }
 
     public void triggerOrientations(AudioClip orientation){

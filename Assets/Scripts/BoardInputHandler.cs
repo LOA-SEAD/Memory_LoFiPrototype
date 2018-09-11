@@ -17,14 +17,16 @@ public class BoardInputHandler : MonoBehaviour {
     private GameObject lastselect;
     private possibleKeyDown lastKeyDown;
     //Location audios
-    public AudioClip linha1;
+    public AudioClip[] location = new AudioClip[16];
+    private int lineCard;
+    private int cardIndex;
+    /*public AudioClip linha1;
     public AudioClip linha2;
     public AudioClip linha3;
     public AudioClip coluna1;
     public AudioClip coluna2;
     public AudioClip coluna3;
-    public AudioClip coluna4;
-    private int cardIndex;
+    public AudioClip coluna4;*/
 
     // Use this for initialization
     void Start () {
@@ -476,47 +478,71 @@ public class BoardInputHandler : MonoBehaviour {
 
     private void PlayerLocation()
     {
-        if (eventSystem.currentSelectedGameObject == null)
+        //Inform the player's location only if the game is active, not during the initial orientations or in the end 
+        if (MemoryPairing.gameActive)
         {
-            //Wall Sound if player is in the wall
-            lastselect.GetComponent<Card>().PlayWallSound();
+            if (eventSystem.currentSelectedGameObject == null)
+            {
+                //Wall Sound if player is in the wall
+                lastselect.GetComponent<Card>().PlayWallSound();
+            }
+            else
+            {
+                /*
+                //OLD METHOD
+                //Get the line of the card and get the index column of card
+                if (row1.Contains(eventSystem.currentSelectedGameObject))
+                {
+                    memoryPairing.PlayLineCard(linha1);
+                    cardIndex = row1.IndexOf(eventSystem.currentSelectedGameObject);
+                }
+                else if (row2.Contains(eventSystem.currentSelectedGameObject))
+                {
+                    memoryPairing.PlayLineCard(linha2);
+                    cardIndex = row2.IndexOf(eventSystem.currentSelectedGameObject);
+                }
+                else
+                {
+                    memoryPairing.PlayLineCard(linha3);
+                    cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
+                }
+                //Get the column of the card
+                if (cardIndex == 0)
+                {
+                    StartCoroutine(memoryPairing.PlayColumnCard(coluna1));
+                }
+                else if (cardIndex == 1)
+                {
+                    StartCoroutine(memoryPairing.PlayColumnCard(coluna2));
+                }
+                else if (cardIndex == 2)
+                {
+                    StartCoroutine(memoryPairing.PlayColumnCard(coluna3));
+                }
+                else
+                {
+                    StartCoroutine(memoryPairing.PlayColumnCard(coluna4));
+                }
+                */
+                if (row1.Contains(eventSystem.currentSelectedGameObject))
+                {
+                    lineCard = 0;
+                    cardIndex = row1.IndexOf(eventSystem.currentSelectedGameObject);
+                }
+                else if (row2.Contains(eventSystem.currentSelectedGameObject))
+                {
+                    lineCard = 1;
+                    cardIndex = row2.IndexOf(eventSystem.currentSelectedGameObject);
+                }
+                else
+                {
+                    lineCard = 2;
+                    cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
+                }
+                //Play the location
+                memoryPairing.PlayLineCard(location[lineCard * 4 + cardIndex]);
+            }    
         }
-        else
-        {
-            //Get the line of the card and get the index column of card
-            if (row1.Contains(eventSystem.currentSelectedGameObject))
-            {
-                memoryPairing.PlayLineCard(linha1);
-                cardIndex = row1.IndexOf(eventSystem.currentSelectedGameObject);
-            }
-            else if (row2.Contains(eventSystem.currentSelectedGameObject))
-            {
-                memoryPairing.PlayLineCard(linha2);
-                cardIndex = row2.IndexOf(eventSystem.currentSelectedGameObject);
-            }
-            else
-            {
-                memoryPairing.PlayLineCard(linha3);
-                cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
-            }
-            //Get the column of the card
-            if (cardIndex == 0)
-            {
-                StartCoroutine(memoryPairing.PlayColumnCard(coluna1));
-            }
-            else if (cardIndex == 1)
-            {
-                StartCoroutine(memoryPairing.PlayColumnCard(coluna2));
-            }
-            else if (cardIndex == 2)
-            {
-                StartCoroutine(memoryPairing.PlayColumnCard(coluna3));
-            }
-            else
-            {
-                StartCoroutine(memoryPairing.PlayColumnCard(coluna4));
-            }
-        }    
     }
 
     // Handles OnMove events
