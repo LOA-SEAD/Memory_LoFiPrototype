@@ -115,6 +115,9 @@ public class Menu : MonoBehaviour {
     }
 
     public void triggerOrientations(AudioClip orientation){
-        StartCoroutine(ReadOrientations(orientation));
+        if (!audioSource.isPlaying)
+        {
+            StartCoroutine(ReadOrientations(orientation));
+        }
     }
 }

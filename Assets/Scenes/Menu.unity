@@ -277,6 +277,18 @@ MonoBehaviour:
     type: 3}
   orientationInstrucions7: {fileID: 8300000, guid: 2f20b833b98231d4eafb605d361047a8,
     type: 3}
+  orientationsInstructions:
+  - {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff, type: 3}
+  - {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
+  - {fileID: 8300000, guid: 9d79fa3a8a2f1f74aa9c78daceb83d23, type: 3}
+  - {fileID: 8300000, guid: c225e2b6ef1218c4d97010e6bfb738b3, type: 3}
+  - {fileID: 8300000, guid: 5fdcdc518000459459bf9c6903523558, type: 3}
+  - {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
+  - {fileID: 8300000, guid: 30db45a5cfe779246b1b6dbc604d97ce, type: 3}
+  - {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
+  - {fileID: 8300000, guid: bf896ffa7c60d02458ca16ed882af8d7, type: 3}
+  - {fileID: 8300000, guid: 2f20b833b98231d4eafb605d361047a8, type: 3}
+  indexOrientations: 0
   edgeSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   emptySound: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
   selectedSound: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
