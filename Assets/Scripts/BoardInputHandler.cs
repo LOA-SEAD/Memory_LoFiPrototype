@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class BoardInputHandler : MonoBehaviour {
 
     enum possibleKeyDown {Down, Up, Left, Right};
+
+    public String filename;
     public List<GameObject> row1;
     public List<GameObject> row2;
     public List<GameObject> row3;
@@ -20,19 +23,29 @@ public class BoardInputHandler : MonoBehaviour {
     public AudioClip[] location = new AudioClip[16];
     private int lineCard;
     private int cardIndex;
-    /*public AudioClip linha1;
-    public AudioClip linha2;
-    public AudioClip linha3;
-    public AudioClip coluna1;
-    public AudioClip coluna2;
-    public AudioClip coluna3;
-    public AudioClip coluna4;*/
+
+    private List<CardClass> cardsData = new List<CardClass>();
 
     // Use this for initialization
     void Start () {
         eventSystem = GetComponent<EventSystem>();
-        memoryPairing = GetComponent<MemoryPairing>();  
-        lastselect = new GameObject(); 
+        memoryPairing = GetComponent<MemoryPairing>();
+        lastselect = new GameObject();
+        String filepath = Application.streamingAssetsPath + "/" + filename;
+
+        Debug.Log("Reading cards " + filepath);
+
+        using (StreamReader sr = new StreamReader(filepath)) 
+        {
+            while (sr.Peek() >= 0) 
+            {
+                cardsData.Add(JsonUtility.FromJson<CardClass>(sr.ReadLine()));
+            }
+        }
+
+        cardsData.Sort();
+
+        Debug.Log("Finished.");
     }
 	
 	// Update is called once per frame
