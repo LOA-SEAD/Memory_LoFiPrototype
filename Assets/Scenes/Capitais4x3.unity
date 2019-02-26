@@ -1959,6 +1959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filename: level3.json
+  rowCount: 3
+  currRow: 0
+  currColumn: 0
   row1:
   - {fileID: 1520326120}
   - {fileID: 1006826909}

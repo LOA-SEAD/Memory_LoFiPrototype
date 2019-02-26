@@ -11,6 +11,9 @@ public class BoardInputHandler : MonoBehaviour {
     enum possibleKeyDown {Down, Up, Left, Right};
 
     public String filename;
+    public int rowCount;
+    public int currRow;
+    public int currColumn;
     public List<GameObject> row1;
     public List<GameObject> row2;
     public List<GameObject> row3;
@@ -23,8 +26,22 @@ public class BoardInputHandler : MonoBehaviour {
     public AudioClip[] location = new AudioClip[16];
     private int lineCard;
     private int cardIndex;
-
+    private int contador;
     private List<CardClass> cardsData = new List<CardClass>();
+    private System.Random rng = new System.Random();
+
+    private void Shuffle<T>(IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
 
     // Use this for initialization
     void Start () {
@@ -43,13 +60,58 @@ public class BoardInputHandler : MonoBehaviour {
             }
         }
 
-        cardsData.Sort();
+        Shuffle<CardClass>(cardsData);
 
-        Debug.Log("Finished.");
+        Debug.Log("Finished loading cards.");
+
+        Card carta = new Card();
+        carta.cardNumber = CardNumber.card6;
+        //carta.contentValue = Resources.Load<AudioClip>("alemanha");
+        //Debug.Log(Application.streamingAssetsPath + "/alemanha");
+        //carta.contentValue = Resources.Load<AudioClip>(Application.streamingAssetsPath + "/alemanha");
+        //carta.PlayContentValue();
+        int k = 0;
+        for (int i = 0; i < rowCount; i++) {
+            for( int j = 0; j < row1.Count; j++)
+            {
+                currRow = i;
+                currColumn = j;
+                StartCoroutine("loadAudio", cardsData[k]);
+                k++;
+            }
+            
+        }
+
+        
+        
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    IEnumerator loadAudio(CardClass info) {
+        Card cartaAtual = null;
+        if (currRow == 0)
+        {
+            cartaAtual = row1[currColumn].GetComponent<Card>();
+        } else if (currRow == 1)
+        {
+            cartaAtual = row2[currColumn].GetComponent<Card>();
+        } else
+        {
+            cartaAtual = row3[currColumn].GetComponent<Card>();
+        }
+
+        if (cartaAtual != null)
+        {
+            string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/" + info.audioName;
+            WWW www = new WWW(wwwPlayerFilePath);
+            yield return www;
+            cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber)info.cardNumber;
+            cartaAtual.GetComponentInChildren<TextMesh>().text = info.cardText;
+            cartaAtual.contentValue = www.GetAudioClip(false, true, AudioType.WAV);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         //Store the selected card if something is selected
         if (eventSystem.currentSelectedGameObject != null)
         {

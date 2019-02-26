@@ -7,5 +7,5 @@ public class CardClass
 {
     public string cardText;
     public string audioName;
-    public string cardNumber;
+    public int cardNumber;
 }

@@ -1372,6 +1372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filename: level2.json
+  rowCount: 2
+  currRow: 0
+  currColumn: 0
   row1:
   - {fileID: 1850442656}
   - {fileID: 1340978458}
