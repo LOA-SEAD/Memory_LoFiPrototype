@@ -66,10 +66,7 @@ public class BoardInputHandler : MonoBehaviour {
 
         Card carta = new Card();
         carta.cardNumber = CardNumber.card6;
-        //carta.contentValue = Resources.Load<AudioClip>("alemanha");
-        //Debug.Log(Application.streamingAssetsPath + "/alemanha");
-        //carta.contentValue = Resources.Load<AudioClip>(Application.streamingAssetsPath + "/alemanha");
-        //carta.PlayContentValue();
+        
         int k = 0;
         for (int i = 0; i < rowCount; i++) {
             for( int j = 0; j < row1.Count; j++)

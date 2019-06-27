@@ -20,13 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AfterLevelMenu.unity
     guid: e3d2f6f6a1c65c147a2623737658278e
-  - enabled: 0
-    path: "Assets/Scenes/Animal3x2_D\xF3345.unity"
-    guid: 7954d8930d5c4014d9e7db31ffc3fe2f
-  - enabled: 0
-    path: "Assets/Scenes/Animal4x2_D\xF3345.unity"
-    guid: 3ed54ac2c16dfd84a9585d804949b23b
-  - enabled: 0
-    path: "Assets/Scenes/Animal4x3_D\xF3345.unity"
-    guid: b555f947740b17d4eacaa5da04033cbf
+  - enabled: 1
+    path: Assets/Scenes/Atlas.unity
+    guid: 4d42c2519ae240b4db77c5d61968562f
   m_configObjects: {}
