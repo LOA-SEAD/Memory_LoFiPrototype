@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/AfterLevelMenu.unity
     guid: e3d2f6f6a1c65c147a2623737658278e
   - enabled: 1
-    path: Assets/Scenes/Atlas.unity
+    path: Assets/Scenes/Almanaque.unity
     guid: 4d42c2519ae240b4db77c5d61968562f
   m_configObjects: {}
