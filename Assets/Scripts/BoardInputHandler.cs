@@ -56,7 +56,17 @@ public class BoardInputHandler : MonoBehaviour {
         {
             while (sr.Peek() >= 0) 
             {
-                cardsData.Add(JsonUtility.FromJson<CardClass>(sr.ReadLine()));
+                CardPairClass cpc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
+                CardClass cc1 = new CardClass();
+                CardClass cc2 = new CardClass();
+                cc1.cardText = cpc.textA;
+                cc1.audioName = cpc.audioA;
+                cc1.pairNumber = cpc.pairNumber;
+                cc2.cardText = cpc.textB;
+                cc2.audioName = cpc.audioB;
+                cc2.pairNumber = cpc.pairNumber;
+                cardsData.Add(cc1);
+                cardsData.Add(cc2);
             }
         }
 
@@ -101,7 +111,7 @@ public class BoardInputHandler : MonoBehaviour {
             string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/" + info.audioName;
             WWW www = new WWW(wwwPlayerFilePath);
             yield return www;
-            cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber)info.cardNumber;
+            cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber) info.pairNumber;
             cartaAtual.GetComponentInChildren<TextMesh>().text = info.cardText;
             cartaAtual.contentValue = www.GetAudioClip(false, true, AudioType.WAV);
         }

@@ -18,7 +18,7 @@ public class Atlas : MonoBehaviour
     public List<String> filenames;
     
     private EventSystem eventSystem;
-    private List<CardClass> cardsData = new List<CardClass>();
+    private List<CardPairClass> cardsData = new List<CardPairClass>();
 
     public List<Text> pairGridTexts = new List<Text>();
 
@@ -36,19 +36,12 @@ public class Atlas : MonoBehaviour
         {
             using (StreamReader sr = new StreamReader(filepath + level)) 
             {
-                
-                int j = 0;
                 while (sr.Peek() >= 0) 
                 {   
-                    CardClass cc = JsonUtility.FromJson<CardClass>(sr.ReadLine());
+                    CardPairClass cc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
                     cardsData.Add(cc);
-                    j++;
-
-                    if (j % 2 != 0) 
-                    {
-                        pairGridTexts[i].text = cc.cardText;
-                        i++;
-                    }
+                    pairGridTexts[i].text = cc.textA;
+                    i++;
                 }
             }
         }
@@ -60,24 +53,15 @@ public class Atlas : MonoBehaviour
 
     public void openPairDetails(int pairNumber)
     {
-        bool foundOneCard = false;
-
-        foreach (CardClass card in this.cardsData)
+        foreach (CardPairClass card in this.cardsData)
         {
-            if (card.cardNumber == pairNumber)
+            if (card.pairNumber == pairNumber)
             {
-                // Found first card for pair
-                if (!foundOneCard)
-                {
-                    this.cardA.text = card.cardText;
-                    foundOneCard = true;
-                } else
-                // Found second card for pair
-                {
-                    this.cardB.text = card.cardText;
-                    this.detailPanel.SetActive(true);
-                    break;
-                }
+                this.cardA.text = card.textA;
+                this.cardB.text = card.textB;
+                this.descriptionText.text = card.description;
+                this.detailPanel.SetActive(true);
+                break;
             }
         }
     }

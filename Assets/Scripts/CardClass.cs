@@ -7,5 +7,6 @@ public class CardClass
 {
     public string cardText;
     public string audioName;
-    public int cardNumber;
+
+    public int pairNumber;
 }
