@@ -311,7 +311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &60526689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &238451090
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1362,7 +1362,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &690052304
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1910,7 +1910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &796424618
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2218,7 +2218,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &986649280
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2297,7 +2297,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1174104010
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2376,7 +2376,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1177858443
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2455,7 +2455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1328629285
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2634,7 +2634,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1423077645
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3017,7 +3017,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1592841990
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3254,7 +3254,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1680268230
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3333,7 +3333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1742651054
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4006,7 +4006,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sei l\xE1"
+  m_Text: 
 --- !u!222 &1973432517
 CanvasRenderer:
   m_ObjectHideFlags: 0
