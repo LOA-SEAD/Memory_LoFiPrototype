@@ -50,9 +50,9 @@ public class MemoryPairing : MonoBehaviour {
         canSelect = false;
         eventSystem = GetComponent<EventSystem>();
         //Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         // Hide cursor when locking
-        Cursor.visible = false;
+        //Cursor.visible = false;
         //triggerOrientations(orientationThemeLevel);
         triggerOrientations();
     }

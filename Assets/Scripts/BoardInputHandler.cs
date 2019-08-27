@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -112,7 +113,7 @@ public class BoardInputHandler : MonoBehaviour {
             WWW www = new WWW(wwwPlayerFilePath);
             yield return www;
             cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber) info.pairNumber;
-            cartaAtual.GetComponentInChildren<TextMesh>().text = info.cardText;
+            cartaAtual.GetComponentInChildren<Text>().text = info.cardText;
             cartaAtual.contentValue = www.GetAudioClip(false, true, AudioType.WAV);
         }
     }

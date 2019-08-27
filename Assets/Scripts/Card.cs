@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour {
 
@@ -14,16 +15,22 @@ public class Card : MonoBehaviour {
     public float flippingTime;
     private float selectPitch;
 
+    public Sprite openSprite, closedSprite;
     private bool found = false;
     private bool flipped = false;
     private MemoryPairing memoryPairing;
     private AudioSource audioSource;
+    private Image cardSprite;
+
+    private Text text;
 
 	// Use this for initialization
 	void Start () {
         hoverEffect.enabled = false;
         memoryPairing = FindObjectOfType<MemoryPairing>();
         audioSource = this.GetComponent<AudioSource>();
+        cardSprite = this.GetComponent<Image>();
+        text = this.GetComponentInChildren<Text>();
         selectPitch = audioSource.pitch;
     }
 
@@ -108,12 +115,16 @@ public class Card : MonoBehaviour {
     }
 
     private void Flip() {
-        transform.rotation = new Quaternion(0.0f, 1.0f, 0.0f, 0.0f);
+        //transform.rotation = new Quaternion(0.0f, 1.0f, 0.0f, 0.0f);
+        cardSprite.sprite = openSprite;
+        text.enabled = true;
         PlayContentValue();
         flipped = true;
     }
     public void UnFlip() {
-        transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
+        //transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
+        cardSprite.sprite = closedSprite;
+        text.enabled = false;
         flipped = false;
     }
 

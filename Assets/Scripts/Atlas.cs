@@ -18,6 +18,9 @@ public class Atlas : MonoBehaviour
     public List<String> filenames;
     
     private EventSystem eventSystem;
+
+    private AudioSource audioSource;
+    private AudioClip orientation;
     private List<CardPairClass> cardsData = new List<CardPairClass>();
 
     public List<Text> pairGridTexts = new List<Text>();
@@ -26,29 +29,8 @@ public class Atlas : MonoBehaviour
     void Start()
     {
         eventSystem = GetComponent<EventSystem>();
-    
-
-        String filepath = Application.streamingAssetsPath + "/";
-
-        Debug.Log("Reading cards " + filepath);
-        int i = 0;
-        foreach (String level in filenames)
-        {
-            using (StreamReader sr = new StreamReader(filepath + level)) 
-            {
-                while (sr.Peek() >= 0) 
-                {   
-                    CardPairClass cc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
-                    cardsData.Add(cc);
-                    pairGridTexts[i].text = cc.textA;
-                    i++;
-                }
-            }
-        }
-
-        Debug.Log("Finished loading cards.");
-
-
+        loadCards();
+        playOrientation();
     }
 
     public void openPairDetails(int pairNumber)
@@ -79,5 +61,35 @@ public class Atlas : MonoBehaviour
                 SceneManager.LoadScene(0);
             }
         }
+    }
+
+    private void loadCards()
+    {
+        String filepath = Application.streamingAssetsPath + "/";
+
+        Debug.Log("Reading cards " + filepath);
+        int i = 0;
+        foreach (String level in filenames)
+        {
+            using (StreamReader sr = new StreamReader(filepath + level)) 
+            {
+                while (sr.Peek() >= 0) 
+                {   
+                    CardPairClass cc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
+                    cardsData.Add(cc);
+                    pairGridTexts[i].text = cc.textA;
+                    i++;
+                }
+            }
+        }
+
+        Debug.Log("Finished loading cards.");
+    }
+
+    private IEnumerator playOrientation()
+    {
+        audioSource.clip = orientation;
+        audioSource.Play();
+        yield return new WaitForSeconds(orientation.length + 0.1f);
     }
 }
