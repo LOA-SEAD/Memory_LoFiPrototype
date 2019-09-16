@@ -11,6 +11,7 @@ public class BoardInputHandler : MonoBehaviour {
 
     enum possibleKeyDown {Down, Up, Left, Right};
 
+    public GameObject menuPanel;
     public String filename;
     public int rowCount;
     public int currRow;
@@ -88,11 +89,7 @@ public class BoardInputHandler : MonoBehaviour {
                 StartCoroutine("loadAudio", cardsData[k]);
                 k++;
             }
-            
         }
-
-        
-        
     }
 
     IEnumerator loadAudio(CardClass info) {
@@ -186,13 +183,26 @@ public class BoardInputHandler : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            memoryPairing.PlayBackToMenu();
+            toggleMenu();
+        }
+    }
+
+    private void toggleMenu() {
+        memoryPairing.PlayBackToMenu();
+        if (menuPanel.activeSelf) {
+            menuPanel.SetActive(false);
             //Release cursor
             Cursor.lockState = CursorLockMode.None;
             //Change cursor to visible again
             Cursor.visible = true;
-            SceneManager.LoadScene(0);
+        } else {
+            menuPanel.SetActive(true);
+            //Release cursor
+            Cursor.lockState = CursorLockMode.Locked;
+            //Change cursor to visible again
+            Cursor.visible = false;
         }
+
     }
 
     private void Submit() {
