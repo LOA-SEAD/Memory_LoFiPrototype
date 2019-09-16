@@ -11,7 +11,7 @@ public class Card : MonoBehaviour {
     public AudioClip contentValue;
     public AudioClip invalidCard;
     public AudioClip selectedCard;
-    public SpriteRenderer hoverEffect;
+    public Image hoverEffect;
     public float flippingTime;
     private float selectPitch;
 
@@ -20,16 +20,14 @@ public class Card : MonoBehaviour {
     private bool flipped = false;
     private MemoryPairing memoryPairing;
     private AudioSource audioSource;
-    private Image cardSprite;
+    public Image cardSprite;
 
     private Text text;
 
 	// Use this for initialization
 	void Start () {
-        hoverEffect.enabled = false;
         memoryPairing = FindObjectOfType<MemoryPairing>();
         audioSource = this.GetComponent<AudioSource>();
-        cardSprite = this.GetComponent<Image>();
         text = this.GetComponentInChildren<Text>();
         selectPitch = audioSource.pitch;
     }
@@ -108,10 +106,8 @@ public class Card : MonoBehaviour {
         SpriteRenderer[] cardSprites = GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sprite in cardSprites)
         {
-            //sprite.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);    
             sprite.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);        
         }
-        //hoverEffect.color = new Color(237.0f/255.0f, 1.0f, 0.0f, 0.5f);
     }
 
     private void Flip() {
@@ -162,7 +158,7 @@ public class Card : MonoBehaviour {
         audioSource.pitch = selectPitch;
         audioSource.clip = selectedCard;
         audioSource.Play();
-        yield return new WaitForSeconds(selectedCard.length + 0.2f);
+        yield return new WaitForSeconds(selectedCard.length + 0.5f);
         PlayContentValue();
     }
 }

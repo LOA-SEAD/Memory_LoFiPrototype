@@ -18,6 +18,7 @@ public class BoardInputHandler : MonoBehaviour {
     public List<GameObject> row1;
     public List<GameObject> row2;
     public List<GameObject> row3;
+    public List<GameObject> row4;
     private EventSystem eventSystem;
     private MemoryPairing memoryPairing;
     //To fix the problem of deselected a card
@@ -48,7 +49,7 @@ public class BoardInputHandler : MonoBehaviour {
     void Start () {
         eventSystem = GetComponent<EventSystem>();
         memoryPairing = GetComponent<MemoryPairing>();
-        lastselect = new GameObject();
+        //lastselect = new GameObject();
         String filepath = Application.streamingAssetsPath + "/" + filename;
 
         Debug.Log("Reading cards " + filepath);
@@ -102,9 +103,12 @@ public class BoardInputHandler : MonoBehaviour {
         } else if (currRow == 1)
         {
             cartaAtual = row2[currColumn].GetComponent<Card>();
-        } else
+        } else if (currRow == 2)
         {
             cartaAtual = row3[currColumn].GetComponent<Card>();
+        } else
+        {
+            cartaAtual = row4[currColumn].GetComponent<Card>();
         }
 
         if (cartaAtual != null)
@@ -212,7 +216,7 @@ public class BoardInputHandler : MonoBehaviour {
                 //select Next card
                 eventSystem.SetSelectedGameObject(row2[row1.IndexOf(eventSystem.currentSelectedGameObject)]);
             }
-            else
+            else 
             {
                 if (row3.Count == 0)
                 {
@@ -230,10 +234,28 @@ public class BoardInputHandler : MonoBehaviour {
                     }
                     else
                     {
-                        //play wall sound and deselect the card
-                        eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
-                        lastKeyDown = possibleKeyDown.Down;
+                        if (row4.Count == 0)
+                        {
+                            //play wall sound and deselect the card
+                            eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
+                            eventSystem.SetSelectedGameObject(null);
+                            lastKeyDown = possibleKeyDown.Down;
+                        }
+                        else 
+                        {
+                            if (row3.Contains(eventSystem.currentSelectedGameObject)) //selected in row3
+                            {
+                                //select next card in row 4
+                                eventSystem.SetSelectedGameObject(row4[row3.IndexOf(eventSystem.currentSelectedGameObject)]);
+                            }
+                            else
+                            {
+                                //play wall sound and deselect the card
+                                eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
+                                eventSystem.SetSelectedGameObject(null);
+                                lastKeyDown = possibleKeyDown.Down;
+                            }
+                        }
                     }
                 }
             }
@@ -251,7 +273,6 @@ public class BoardInputHandler : MonoBehaviour {
             }
         }
     }
-
     private void MoveUp()
     {
         if (eventSystem.currentSelectedGameObject != null)
@@ -261,20 +282,21 @@ public class BoardInputHandler : MonoBehaviour {
                 //select next card
                 eventSystem.SetSelectedGameObject(row1[row2.IndexOf(eventSystem.currentSelectedGameObject)]);
             }
-            else
+            else if (row3.Contains(eventSystem.currentSelectedGameObject))
             {
-                if (row3.Contains(eventSystem.currentSelectedGameObject))
-                {
-                    //select next card
-                    eventSystem.SetSelectedGameObject(row2[row3.IndexOf(eventSystem.currentSelectedGameObject)]);
-                }
-                else
-                {
-                    //play wall sound and deselect the card
-                    eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
-                    lastKeyDown = possibleKeyDown.Up;
-                }
+                //select next card
+                eventSystem.SetSelectedGameObject(row2[row3.IndexOf(eventSystem.currentSelectedGameObject)]);
+            }
+            else if (row4.Contains(eventSystem.currentSelectedGameObject))
+            {
+                //select next card
+                eventSystem.SetSelectedGameObject(row3[row4.IndexOf(eventSystem.currentSelectedGameObject)]);
+            } else
+            {
+                //play wall sound and deselect the card
+                eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
+                eventSystem.SetSelectedGameObject(null);
+                lastKeyDown = possibleKeyDown.Up;
             }
         }
         else
@@ -301,233 +323,178 @@ public class BoardInputHandler : MonoBehaviour {
                 }
                 else
                 {
-                    //play wall sound
-                    lastselect.GetComponent<Card>().PlayWallSound();
+                    if (row4.Count == 0)
+                    {
+                        if (row3.Contains(lastselect) && (lastKeyDown == possibleKeyDown.Down))
+                        {
+                            //select last card
+                            eventSystem.SetSelectedGameObject(row3[row3.IndexOf(lastselect)]);
+                        }
+                        else
+                        {
+                            //play wall sound
+                            lastselect.GetComponent<Card>().PlayWallSound();
+                        }
+                    } else {
+                        if (row4.Contains(lastselect) && (lastKeyDown == possibleKeyDown.Down))
+                        {
+                            //select last card
+                            eventSystem.SetSelectedGameObject(row4[row4.IndexOf(lastselect)]);
+                        }
+                    }
                 }
             }
         }
     }
 
+    private void doMoveLeft(List<GameObject> row) 
+    {
+        //get the index of card
+        int cardIndex = row.IndexOf(eventSystem.currentSelectedGameObject);
+
+        if (cardIndex == 0)
+        {
+            //play wall sound and deselect the card
+            eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
+            eventSystem.SetSelectedGameObject(null);
+            lastKeyDown = possibleKeyDown.Left;
+        }
+        else
+        {
+            //Select next card
+            eventSystem.SetSelectedGameObject(row[cardIndex - 1]);
+        }
+    }
     private void MoveLeft()
     {
+            // Player is inside grid
             if (eventSystem.currentSelectedGameObject != null)
             {
                 if (row1.Contains(eventSystem.currentSelectedGameObject))
                 {
-                    //get the index of card
-                    int cardIndex = row1.IndexOf(eventSystem.currentSelectedGameObject);
-
-                    if (cardIndex == 0)
-                    {
-                        //play wall sound and deselect the card
-                        eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
-                        lastKeyDown = possibleKeyDown.Left;
-                    }
-                    else
-                    {
-                        //Select next card
-                        eventSystem.SetSelectedGameObject(row1[cardIndex - 1]);
-                    }
+                    doMoveLeft(row1);
                 }
                 else if (row2.Contains(eventSystem.currentSelectedGameObject))
                 {
-                    //get the index of card
-                    int cardIndex = row2.IndexOf(eventSystem.currentSelectedGameObject);
-
-                    if (cardIndex == 0)
-                    {
-                        //play wall sound and deselect the card
-                        eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
-                        lastKeyDown = possibleKeyDown.Left;
-                    }
-                    else
-                    {
-                        //Select next card
-                        eventSystem.SetSelectedGameObject(row2[cardIndex - 1]);
-                    }
+                    doMoveLeft(row2);
                 }
-                else
+                else if (row3.Contains(eventSystem.currentSelectedGameObject))
                 {
-                    //get the index of card
-                    int cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
-
-                    if (cardIndex == 0)
-                    {
-                        //play wall sound and deselect the card
-                        eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                        eventSystem.SetSelectedGameObject(null);
-                        lastKeyDown = possibleKeyDown.Left;
-                    }
-                    else
-                    {
-                        //Select next card
-                        eventSystem.SetSelectedGameObject(row3[cardIndex - 1]);
-                    }
+                    doMoveLeft(row3);
+                } else
+                {
+                    doMoveLeft(row4);
                 }
             }
+            // Player is on a border cell
             else
             {
                 if (row1.Contains(lastselect))
                 {
-                    //get the index of card
-                    int cardIndex = row1.IndexOf(lastselect);
-
-                    if ((cardIndex != row1.Count - 1) || (lastKeyDown != possibleKeyDown.Right))
-                    {
-                        //play wall sound
-                        lastselect.GetComponent<Card>().PlayWallSound();
-                    }
-                    else
-                    {
-                        //Select next card
-                        eventSystem.SetSelectedGameObject(row1[cardIndex]);
-                    }
+                    moveLeftFromBorder(row1);
                 }
                 else if (row2.Contains(lastselect))
                 {
-                    //get the index of card
-                    int cardIndex = row2.IndexOf(lastselect);
-
-                    if ((cardIndex != row2.Count - 1) || (lastKeyDown != possibleKeyDown.Right))
-                    {
-                        //play wall sound
-                        lastselect.GetComponent<Card>().PlayWallSound();
-                    }
-                    else
-                    {
-                        //Select next card
-                        eventSystem.SetSelectedGameObject(row2[cardIndex]);
-                    }
+                    moveLeftFromBorder(row2);
+                }
+                else if (row3.Contains(lastselect))
+                {
+                    moveLeftFromBorder(row3);
                 }
                 else
                 {
-                    //get the index of card
-                    int cardIndex = row3.IndexOf(lastselect);
-
-                    if ((cardIndex != row3.Count - 1) || (lastKeyDown != possibleKeyDown.Right))
-                    {
-                        //play wall sound
-                        lastselect.GetComponent<Card>().PlayWallSound();
-                    }
-                    else
-                    {
-                        //Select next card
-                        eventSystem.SetSelectedGameObject(row3[cardIndex]);
-                    }
+                    moveLeftFromBorder(row4);
                 }
             }
     }
 
+    private void moveLeftFromBorder(List<GameObject> row) {
+        //get the index of card
+        int cardIndex = row.IndexOf(lastselect);
+
+        if ((cardIndex != row.Count - 1) || (lastKeyDown != possibleKeyDown.Right))
+        {
+            //play wall sound
+            lastselect.GetComponent<Card>().PlayWallSound();
+        }
+        else
+        {
+            //Select next card
+            eventSystem.SetSelectedGameObject(row[cardIndex]);
+        }
+    }
+
+    private void doMoveRight(List<GameObject> row)
+    {
+        //get the index of card
+        int cardIndex = row.IndexOf(eventSystem.currentSelectedGameObject);
+
+        if (cardIndex == row.Count - 1)
+        {
+            //play wall sound and deselect the card
+            eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
+            eventSystem.SetSelectedGameObject(null);
+            lastKeyDown = possibleKeyDown.Right;
+        }
+        else
+        {
+            //Select next card
+            eventSystem.SetSelectedGameObject(row[cardIndex + 1]);
+        }
+    }
+
+    private void unborderFromRight(List<GameObject> row)
+    {
+        //get the index of card
+        int cardIndex = row.IndexOf(lastselect);
+
+        if ((cardIndex != 0) || (lastKeyDown != possibleKeyDown.Left))
+        {
+            //play wall sound
+            lastselect.GetComponent<Card>().PlayWallSound();
+        }
+        else
+        {
+            //Select next card
+            eventSystem.SetSelectedGameObject(row[cardIndex]);
+        }
+    }
     private void MoveRight()
     {
         if (eventSystem.currentSelectedGameObject != null)
         {
             if (row1.Contains(eventSystem.currentSelectedGameObject))
             {
-                //get the index of card
-                int cardIndex = row1.IndexOf(eventSystem.currentSelectedGameObject);
-
-                if (cardIndex == row1.Count - 1)
-                {
-                    //play wall sound and deselect the card
-                    eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
-                    lastKeyDown = possibleKeyDown.Right;
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row1[cardIndex + 1]);
-                }
+                doMoveRight(row1);
             }
             else if (row2.Contains(eventSystem.currentSelectedGameObject))
             {
-                //get the index of card
-                int cardIndex = row2.IndexOf(eventSystem.currentSelectedGameObject);
-
-                if (cardIndex == row2.Count - 1)
-                {
-                    //play wall sound and deselect the card
-                    eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
-                    lastKeyDown = possibleKeyDown.Right;
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row2[cardIndex + 1]);
-                }
+                doMoveRight(row2);
             }
             else if (row3.Contains(eventSystem.currentSelectedGameObject))
             {
-                //get the index of card
-                int cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
-
-                if (cardIndex == row3.Count - 1)
-                {
-                    //play wall sound and deselect the card
-                    eventSystem.currentSelectedGameObject.GetComponent<Card>().PlayWallSound();
-                    eventSystem.SetSelectedGameObject(null);
-                    lastKeyDown = possibleKeyDown.Right;
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row3[cardIndex + 1]);
-                }
+                doMoveRight(row3);
+            } else 
+            {
+                doMoveRight(row4);
             }
         }
         else
         {
             if (row1.Contains(lastselect))
             {
-                //get the index of card
-                int cardIndex = row1.IndexOf(lastselect);
-
-                if ((cardIndex != 0) || (lastKeyDown != possibleKeyDown.Left))
-                {
-                    //play wall sound
-                    lastselect.GetComponent<Card>().PlayWallSound();
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row1[cardIndex]);
-                }
+                unborderFromRight(row1);
             }
             else if (row2.Contains(lastselect))
             {
-                //get the index of card
-                int cardIndex = row2.IndexOf(lastselect);
-
-                if ((cardIndex != 0) || (lastKeyDown != possibleKeyDown.Left))
-                {
-                    //play wall sound
-                    lastselect.GetComponent<Card>().PlayWallSound();
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row2[cardIndex]);
-                }
+                unborderFromRight(row2);
             }
-            else
+            else if (row3.Contains(lastselect))
             {
-                //get the index of card
-                int cardIndex = row3.IndexOf(lastselect);
-
-                if ((cardIndex != 0) || (lastKeyDown != possibleKeyDown.Left))
-                {
-                    //play wall sound
-                    lastselect.GetComponent<Card>().PlayWallSound();
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row3[cardIndex]);
-                }
+                unborderFromRight(row3);
+            } else 
+            {
+                unborderFromRight(row4);
             }
         }
     }
@@ -554,6 +521,12 @@ public class BoardInputHandler : MonoBehaviour {
                 if (v2 < row3.Count)
                 {
                     eventSystem.SetSelectedGameObject(row3[v2]);
+                }
+                break;
+            case 3:
+                if (v2 < row4.Count)
+                {
+                    eventSystem.SetSelectedGameObject(row4[v2]);
                 }
                 break;
         }
@@ -622,102 +595,14 @@ public class BoardInputHandler : MonoBehaviour {
                     lineCard = 2;
                     cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
                 }
+                {
+                    lineCard = 3;
+                    cardIndex = row4.IndexOf(eventSystem.currentSelectedGameObject);
+                }
                 //Play the location
                 memoryPairing.PlayLineCard(location[lineCard * 4 + cardIndex]);
             }    
         }
     }
 
-    // Handles OnMove events
-    /*void OnMove(AxisEventData eventData)
-    {
-        Debug.Log("moving" + eventData.ToString());
-
-        if(eventData.moveDir == MoveDirection.Down)
-        { 
-            if(row1.Contains(eventData.selectedObject))
-            {
-                //select Next card
-            }
-            else
-            {
-                //play wall sound
-            }
-        } else if (eventData.moveDir == MoveDirection.Up)
-        {
-            if (row1.Contains(eventData.selectedObject))
-            {
-                //play wall sound
-            }
-            else
-            {
-                //select next card
-            }
-        }
-        else if(eventData.moveDir == MoveDirection.Right)
-        {
-            if(row1.Contains(eventData.selectedObject))
-            {
-                //get the index of card
-                int cardIndex = row1.IndexOf(eventData.selectedObject);
-                
-                if(cardIndex == row1.Count)
-                {
-                    //play wall sound
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row1[cardIndex + 1]);
-                }
-            }
-            else
-            {
-                //get the index of card
-                int cardIndex = row2.IndexOf(eventData.selectedObject);
-
-                if (cardIndex == row2.Count)
-                {
-                    //play wall sound
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row2[cardIndex + 1]);
-                }
-            }
-        } else if (eventData.moveDir == MoveDirection.Left)
-        {
-            if (row1.Contains(eventData.selectedObject))
-            {
-                //get the index of card
-                int cardIndex = row1.IndexOf(eventData.selectedObject);
-
-                if (cardIndex == row1.Count)
-                {
-                    //play wall sound
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row1[cardIndex - 1]);
-                }
-            }
-            else
-            {
-                //get the index of card
-                int cardIndex = row2.IndexOf(eventData.selectedObject);
-
-                if (cardIndex == row2.Count)
-                {
-                    //play wall sound
-                }
-                else
-                {
-                    //Select next card
-                    eventSystem.SetSelectedGameObject(row2[cardIndex - 1]);
-                }
-            }
-        }
-    }*/
 }
