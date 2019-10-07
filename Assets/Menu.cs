@@ -21,6 +21,7 @@ public class Menu : MonoBehaviour {
     public AudioClip emptySound;
     public AudioClip selectedSound;
     private static bool started = false;
+    private static bool isPlayingOrientation = true;
     AudioSource audioSource;
 
     //Function executed before Start()
@@ -43,13 +44,21 @@ public class Menu : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {         
-        if (eventSystem.currentSelectedGameObject == null)
-        {
-            eventSystem.SetSelectedGameObject(lastselect);
-        }
-        else
-        {
-            lastselect = eventSystem.currentSelectedGameObject;
+        //Pause orientation and start the level
+        if(Input.GetKeyDown(KeyCode.K) && (isPlayingOrientation)) {  //Moving
+            audioSource.Stop();
+            isPlayingOrientation = false;
+            eventSystem.enabled = true;
+            eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+        } else {
+            if (eventSystem.currentSelectedGameObject == null)
+            {
+                eventSystem.SetSelectedGameObject(lastselect);
+            }
+            else
+            {
+                lastselect = eventSystem.currentSelectedGameObject;
+            }
         }
     }
 

@@ -76,9 +76,6 @@ public class BoardInputHandler : MonoBehaviour {
         Shuffle<CardClass>(cardsData);
 
         Debug.Log("Finished loading cards.");
-
-        Card carta = new Card();
-        carta.cardNumber = CardNumber.card6;
         
         int k = 0;
         for (int i = 0; i < rowCount; i++) {
@@ -121,91 +118,95 @@ public class BoardInputHandler : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        //Store the selected card if something is selected
-        if (eventSystem.currentSelectedGameObject != null)
-        {
-            lastselect = eventSystem.currentSelectedGameObject;
-        }
 
-        if(Input.GetKeyDown(KeyCode.RightArrow)) {  //Moving
-            MoveRight();
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            MoveLeft();
-        } else if(Input.GetKeyDown(KeyCode.UpArrow)) {
-            MoveUp();
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            MoveDown();
-        } else if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) { //Submit
-            Submit();
-        } else if (Input.GetMouseButtonDown(0)){ //To not bug the selection system
-            eventSystem.SetSelectedGameObject(lastselect);
-        } else if (Input.GetKeyDown(KeyCode.Q)) { //Direct access
-            Access(0, 0);
-        } else if (Input.GetKeyDown(KeyCode.W)) {
-            Access(0, 1);
-        } else if (Input.GetKeyDown(KeyCode.E)) {
-            Access(0, 2);
+        if (!menuPanel.activeSelf) {
+            //Store the selected card if something is selected
+            if (eventSystem.currentSelectedGameObject != null)
+            {
+                lastselect = eventSystem.currentSelectedGameObject;
+            }
+            if(Input.GetKeyDown(KeyCode.RightArrow)) {  //Moving
+                MoveRight();
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+                MoveLeft();
+            } else if(Input.GetKeyDown(KeyCode.UpArrow)) {
+                MoveUp();
+            } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+                MoveDown();
+            } else if (Input.GetMouseButtonDown(0)){ //To not bug the selection system
+                eventSystem.SetSelectedGameObject(lastselect);
+            } else if (Input.GetKeyDown(KeyCode.Q)) { //Direct access
+                Access(0, 0);
+            } else if (Input.GetKeyDown(KeyCode.W)) {
+                Access(0, 1);
+            } else if (Input.GetKeyDown(KeyCode.E)) {
+                Access(0, 2);
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                Access(0, 3);
+            }
+            else if (Input.GetKeyDown(KeyCode.A)) {
+                Access(1, 0);
+            } else if (Input.GetKeyDown(KeyCode.S)) {
+                Access(1, 1);
+            } else if (Input.GetKeyDown(KeyCode.D)) {
+                Access(1, 2);
+            }
+            else if (Input.GetKeyDown(KeyCode.F))
+            {
+                Access(1, 3);
+            }
+            else if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Access(2, 0);
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                Access(2, 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.C))
+            {
+                Access(2, 2);
+            }
+            else if (Input.GetKeyDown(KeyCode.V))
+            {
+                Access(2, 3);
+            }
+            else if (Input.GetKeyDown(KeyCode.J))
+            {
+                PlayerLocation();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            Access(0, 3);
-        }
-        else if (Input.GetKeyDown(KeyCode.A)) {
-            Access(1, 0);
-        } else if (Input.GetKeyDown(KeyCode.S)) {
-            Access(1, 1);
-        } else if (Input.GetKeyDown(KeyCode.D)) {
-            Access(1, 2);
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            Access(1, 3);
-        }
-        else if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Access(2, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            Access(2, 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            Access(2, 2);
-        }
-        else if (Input.GetKeyDown(KeyCode.V))
-        {
-            Access(2, 3);
-        }
-        else if (Input.GetKeyDown(KeyCode.J))
-        {
-            PlayerLocation();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             toggleMenu();
         }
     }
 
-    private void toggleMenu() {
+    public void toggleMenu() {
         memoryPairing.PlayBackToMenu();
         if (menuPanel.activeSelf) {
+            //Lock cursor
+            Cursor.lockState = CursorLockMode.Locked;
+            //Change cursor to invisible again
+            Cursor.visible = false;
             menuPanel.SetActive(false);
+            eventSystem.SetSelectedGameObject(lastselect);
+        } else {
             //Release cursor
             Cursor.lockState = CursorLockMode.None;
             //Change cursor to visible again
             Cursor.visible = true;
-        } else {
             menuPanel.SetActive(true);
-            //Release cursor
-            Cursor.lockState = CursorLockMode.Locked;
-            //Change cursor to visible again
-            Cursor.visible = false;
+            lastselect = eventSystem.currentSelectedGameObject;
+            eventSystem.SetSelectedGameObject(GameObject.Find("Continuar"));
         }
 
     }
 
-    private void Submit() {
+    public void Submit() {
         if (eventSystem.currentSelectedGameObject == null)
         {
             //play wall sound
@@ -600,11 +601,11 @@ public class BoardInputHandler : MonoBehaviour {
                     lineCard = 1;
                     cardIndex = row2.IndexOf(eventSystem.currentSelectedGameObject);
                 }
-                else
+                else if (row3.Contains(eventSystem.currentSelectedGameObject))
                 {
                     lineCard = 2;
                     cardIndex = row3.IndexOf(eventSystem.currentSelectedGameObject);
-                }
+                } else
                 {
                     lineCard = 3;
                     cardIndex = row4.IndexOf(eventSystem.currentSelectedGameObject);
@@ -613,6 +614,10 @@ public class BoardInputHandler : MonoBehaviour {
                 memoryPairing.PlayLineCard(location[lineCard * 4 + cardIndex]);
             }    
         }
+    }
+
+    public void leaveGame() {
+        SceneManager.LoadScene(0);
     }
 
 }
