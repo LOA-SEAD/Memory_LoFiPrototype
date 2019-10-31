@@ -129,6 +129,8 @@ public class BoardInputHandler : MonoBehaviour {
                 MoveRight();
             } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
                 MoveLeft();
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+                MoveLeft();
             } else if(Input.GetKeyDown(KeyCode.UpArrow)) {
                 MoveUp();
             } else if (Input.GetKeyDown(KeyCode.DownArrow)) {

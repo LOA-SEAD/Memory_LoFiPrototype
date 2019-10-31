@@ -178,7 +178,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 942217667}
+        - m_Target: {fileID: 1639905290}
           m_MethodName: Stop
           m_Mode: 1
           m_Arguments:
@@ -218,13 +218,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 377417234}
-          m_MethodName: triggerOrientations
-          m_Mode: 2
+          m_MethodName: ChangePhase
+          m_Mode: 3
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 4
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -241,9 +240,9 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
+            m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 1
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
@@ -597,20 +596,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7346bdc9756a04b4f92116e0de8caff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientationMenu: {fileID: 8300000, guid: 321a45909be0f714b90bed768205c110, type: 3}
-  orientationInstrucions1: {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff,
+  orientationMenu: {fileID: 8300000, guid: a6e361517d56589449ab5c8dab1a489c, type: 3}
+  instructions:
+  - {fileID: 8300000, guid: 8addb315a5b854342b229bf898ecd5d7, type: 3}
+  - {fileID: 8300000, guid: 886ad08ae81c4ce4d8f1478e24fe2878, type: 3}
+  - {fileID: 8300000, guid: b74b1744a6fa8c84fa08da37324de4ab, type: 3}
+  - {fileID: 8300000, guid: 45e237d5031cceb46b0542eb860746ab, type: 3}
+  - {fileID: 8300000, guid: bd6dd818f627b9e4a9a52dcbd7650b5a, type: 3}
+  - {fileID: 8300000, guid: 463adc6c4e8b3c44facf6cdb382b687d, type: 3}
+  - {fileID: 8300000, guid: 4c513f0f6744d9842a453ab0c0ef2e81, type: 3}
+  orientationInstrucions2: {fileID: 8300000, guid: 886ad08ae81c4ce4d8f1478e24fe2878,
     type: 3}
-  orientationInstrucions2: {fileID: 8300000, guid: 9d79fa3a8a2f1f74aa9c78daceb83d23,
+  orientationInstrucions3: {fileID: 8300000, guid: b74b1744a6fa8c84fa08da37324de4ab,
     type: 3}
-  orientationInstrucions3: {fileID: 8300000, guid: c225e2b6ef1218c4d97010e6bfb738b3,
+  orientationInstrucions4: {fileID: 8300000, guid: 45e237d5031cceb46b0542eb860746ab,
     type: 3}
-  orientationInstrucions4: {fileID: 8300000, guid: 5fdcdc518000459459bf9c6903523558,
+  orientationInstrucions5: {fileID: 8300000, guid: bd6dd818f627b9e4a9a52dcbd7650b5a,
     type: 3}
-  orientationInstrucions5: {fileID: 8300000, guid: 30db45a5cfe779246b1b6dbc604d97ce,
+  orientationInstrucions6: {fileID: 8300000, guid: 463adc6c4e8b3c44facf6cdb382b687d,
     type: 3}
-  orientationInstrucions6: {fileID: 8300000, guid: bf896ffa7c60d02458ca16ed882af8d7,
-    type: 3}
-  orientationInstrucions7: {fileID: 8300000, guid: 2f20b833b98231d4eafb605d361047a8,
+  orientationInstrucions7: {fileID: 8300000, guid: 4c513f0f6744d9842a453ab0c0ef2e81,
     type: 3}
   edgeSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   emptySound: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -927,7 +932,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 728d6c9a1c9753541aaf06ff52f4f7ea, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4147e3c5f53a62447aeb4d897a9ce164, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1244,7 +1249,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 713eae94b27bf7d4f8900161b0aba460, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9b5fbec29fcba2b4a8f1b90081d06588, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1798,7 +1803,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1639905290}
+        - m_Target: {fileID: 145144482}
           m_MethodName: Stop
           m_Mode: 1
           m_Arguments:
@@ -1877,7 +1882,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 48bd541027ab0d7479a57feb07b8e394, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8b61b35769b84f54a8b974279c455df5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2286,7 +2291,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2cfb29783e655b149aa72696abab894e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f30ca4f1f9abf564480cd07b6f46f47c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2639,7 +2644,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1535029430}
+        - m_Target: {fileID: 145144482}
           m_MethodName: Stop
           m_Mode: 1
           m_Arguments:
@@ -2671,7 +2676,7 @@ MonoBehaviour:
           m_MethodName: triggerOrientations
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff,
+            m_ObjectArgument: {fileID: 8300000, guid: 8addb315a5b854342b229bf898ecd5d7,
               type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 4
@@ -2708,7 +2713,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1af73b032be2c1a4b96edecdf4d27a5b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9b184dee750156d439f6467a9c8bafd5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2841,7 +2846,7 @@ MonoBehaviour:
         m_MethodName: triggerOrientations
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: a3a14bdc03e90d1468255446dba9ddff,
+          m_ObjectArgument: {fileID: 8300000, guid: 8addb315a5b854342b229bf898ecd5d7,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 1

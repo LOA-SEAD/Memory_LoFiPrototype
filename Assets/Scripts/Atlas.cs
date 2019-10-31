@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -16,51 +17,101 @@ public class Atlas : MonoBehaviour
     public Text cardB;
     public Text descriptionText;
     public List<String> filenames;
-    
+    public List<AtlasCard> atlasCards;    
     private EventSystem eventSystem;
 
     private AudioSource audioSource;
-    private AudioClip orientation;
-    private List<CardPairClass> cardsData = new List<CardPairClass>();
 
-    public List<Text> pairGridTexts = new List<Text>();
+    public GameObject lastselect;
+    public bool started = false;
+
+    private Boolean playingOrientations = false;
+
+    //Function executed before Start()
+    void Awake(){
+        audioSource = this.GetComponent<AudioSource>();
+        eventSystem = GetComponent<EventSystem>();
+        //Execute only when the game starts
+        lastselect = null;
+        triggerOrientations();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        eventSystem = GetComponent<EventSystem>();
         loadCards();
-        playOrientation();
     }
 
     public void openPairDetails(int pairNumber)
     {
-        foreach (CardPairClass card in this.cardsData)
+        foreach (AtlasCard card in this.atlasCards)
         {
-            if (card.pairNumber == pairNumber)
+            if (card.cardData.pairNumber == pairNumber)
             {
-                this.cardA.text = card.textA;
-                this.cardB.text = card.textB;
-                this.descriptionText.text = card.description;
+                this.cardA.text = card.cardData.textA;
+                this.cardB.text = card.cardData.textB;
+                this.descriptionText.text = card.cardData.description;
                 this.detailPanel.SetActive(true);
                 break;
             }
         }
     }
 
+    private IEnumerator playPairDetails(AtlasCard card) {
+        return null;
+    } 
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (detailPanel.activeSelf) {
-                // Hides detail panel
-                detailPanel.SetActive(false);
+            if (playingOrientations) {
+                stopOrientations();
+                eventSystem.enabled = true;
+                eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
             } else {
-                // Trasition back to main menu
-                SceneManager.LoadScene(0);
+                if (detailPanel.activeSelf) {
+                    // Hides detail panel
+                    detailPanel.SetActive(false);
+                } else {
+                    // Trasition back to main menu
+                    SceneManager.LoadScene(0);
+                }
+            }
+        } else {
+            if (eventSystem.currentSelectedGameObject == null)
+            {
+                eventSystem.SetSelectedGameObject(lastselect);
+            }
+            else
+            {
+                lastselect = eventSystem.currentSelectedGameObject;
             }
         }
+    }
+
+     IEnumerator loadAudio(AtlasCard ac) {
+        string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/" + ac.cardData.audioA;
+        string wwwPlayerFilePathB = "file://" + Application.streamingAssetsPath + "/" + ac.cardData.audioB;
+
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePath, AudioType.WAV)) {
+            yield return www.SendWebRequest();
+            if (www.isNetworkError) {
+            } else {
+                ac.cardAudioA = DownloadHandlerAudioClip.GetContent(www);
+            }
+        };
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePathB, AudioType.WAV)) {
+            yield return www.SendWebRequest();
+            if (www.isNetworkError) {
+            } else {
+                ac.cardAudioB = DownloadHandlerAudioClip.GetContent(www);
+            }
+        };
+        
+        ac.cardText.text = ac.cardData.textA;
+        ac.cardAudio.clip = ac.cardAudioA;
     }
 
     private void loadCards()
@@ -75,9 +126,9 @@ public class Atlas : MonoBehaviour
             {
                 while (sr.Peek() >= 0) 
                 {   
-                    CardPairClass cc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
-                    cardsData.Add(cc);
-                    pairGridTexts[i].text = cc.textA;
+                    CardPairClass cpc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
+                    atlasCards[i].cardData = cpc;
+                    StartCoroutine("loadAudio",atlasCards[i]);
                     i++;
                 }
             }
@@ -88,8 +139,22 @@ public class Atlas : MonoBehaviour
 
     private IEnumerator playOrientation()
     {
-        audioSource.clip = orientation;
         audioSource.Play();
-        yield return new WaitForSeconds(orientation.length + 0.1f);
+        playingOrientations = true;
+        eventSystem.enabled = false;
+        yield return new WaitForSeconds(audioSource.clip.length + 0.1f);
+    }
+
+    public void triggerOrientations(){
+        if (!audioSource.isPlaying)
+        {
+            StartCoroutine(playOrientation());
+        }
+    }
+
+    private void stopOrientations() {
+        audioSource.Stop();
+        eventSystem.enabled = true;
+        playingOrientations = false;
     }
 }

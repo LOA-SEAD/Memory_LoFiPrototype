@@ -720,7 +720,7 @@ MonoBehaviour:
   previousCard: {fileID: 0}
   currentCard: {fileID: 0}
   waitingTime: 1
-  pairsTotal: 3
+  pairsTotal: 4
   pairsFound: 0
   correctPair: {fileID: 8300000, guid: 25e305919514cb14a91bffd21dd9186b, type: 3}
   wrongPair: {fileID: 8300000, guid: 6e00da2e49cd89646ada6e76d5306d8f, type: 3}
