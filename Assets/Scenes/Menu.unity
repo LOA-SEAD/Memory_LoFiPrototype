@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7346bdc9756a04b4f92116e0de8caff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientationMenu: {fileID: 8300000, guid: a6e361517d56589449ab5c8dab1a489c, type: 3}
+  menuInstructions: {fileID: 8300000, guid: a6e361517d56589449ab5c8dab1a489c, type: 3}
   instructions:
   - {fileID: 8300000, guid: 8addb315a5b854342b229bf898ecd5d7, type: 3}
   - {fileID: 8300000, guid: 886ad08ae81c4ce4d8f1478e24fe2878, type: 3}
@@ -605,18 +605,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bd6dd818f627b9e4a9a52dcbd7650b5a, type: 3}
   - {fileID: 8300000, guid: 463adc6c4e8b3c44facf6cdb382b687d, type: 3}
   - {fileID: 8300000, guid: 4c513f0f6744d9842a453ab0c0ef2e81, type: 3}
-  orientationInstrucions2: {fileID: 8300000, guid: 886ad08ae81c4ce4d8f1478e24fe2878,
-    type: 3}
-  orientationInstrucions3: {fileID: 8300000, guid: b74b1744a6fa8c84fa08da37324de4ab,
-    type: 3}
-  orientationInstrucions4: {fileID: 8300000, guid: 45e237d5031cceb46b0542eb860746ab,
-    type: 3}
-  orientationInstrucions5: {fileID: 8300000, guid: bd6dd818f627b9e4a9a52dcbd7650b5a,
-    type: 3}
-  orientationInstrucions6: {fileID: 8300000, guid: 463adc6c4e8b3c44facf6cdb382b687d,
-    type: 3}
-  orientationInstrucions7: {fileID: 8300000, guid: 4c513f0f6744d9842a453ab0c0ef2e81,
-    type: 3}
+  - {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
+  - {fileID: 8300000, guid: 463adc6c4e8b3c44facf6cdb382b687d, type: 3}
+  - {fileID: 8300000, guid: 4c513f0f6744d9842a453ab0c0ef2e81, type: 3}
   edgeSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   emptySound: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
   selectedSound: {fileID: 8300000, guid: a5d36205678b86044ab31f97e9064e0b, type: 3}
@@ -630,7 +621,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9b184dee750156d439f6467a9c8bafd5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2674,11 +2665,10 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 377417234}
           m_MethodName: triggerOrientations
-          m_Mode: 2
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 8addb315a5b854342b229bf898ecd5d7,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 4
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2844,11 +2834,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417234}
         m_MethodName: triggerOrientations
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 8addb315a5b854342b229bf898ecd5d7,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
