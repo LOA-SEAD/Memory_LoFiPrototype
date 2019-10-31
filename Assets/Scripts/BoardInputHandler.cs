@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -108,11 +109,17 @@ public class BoardInputHandler : MonoBehaviour {
         if (cartaAtual != null)
         {
             string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/" + info.audioName;
-            WWW www = new WWW(wwwPlayerFilePath);
-            yield return www;
+            using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePath, AudioType.WAV)) {
+            yield return www.SendWebRequest();
+            
+            if (www.isNetworkError) {
+            } else {
+                cartaAtual.contentValue = DownloadHandlerAudioClip.GetContent(www);
+            }
+        
             cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber) info.pairNumber;
             cartaAtual.GetComponentInChildren<Text>().text = info.cardText;
-            cartaAtual.contentValue = www.GetAudioClip(false, true, AudioType.WAV);
+        };
         }
     }
 

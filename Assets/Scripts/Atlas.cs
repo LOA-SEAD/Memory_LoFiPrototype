@@ -23,17 +23,20 @@ public class Atlas : MonoBehaviour
     private AudioSource audioSource;
 
     public GameObject lastselect;
-    public bool started = false;
-
-    private Boolean playingOrientations = false;
+    private static bool started = false;
+    private static bool isPlayingOrientation = true;
 
     //Function executed before Start()
     void Awake(){
         audioSource = this.GetComponent<AudioSource>();
         eventSystem = GetComponent<EventSystem>();
         //Execute only when the game starts
-        lastselect = null;
-        triggerOrientations();
+        if (!started){
+            started = true;
+            lastselect = new GameObject();
+            lastselect = null;
+            triggerOrientations();
+        }
     }
 
     // Start is called before the first frame update
@@ -66,10 +69,8 @@ public class Atlas : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (playingOrientations) {
-                stopOrientations();
-                eventSystem.enabled = true;
-                eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+            if (isPlayingOrientation) {
+                StartCoroutine(stopOrientations());
             } else {
                 if (detailPanel.activeSelf) {
                     // Hides detail panel
@@ -140,9 +141,9 @@ public class Atlas : MonoBehaviour
     private IEnumerator playOrientation()
     {
         audioSource.Play();
-        playingOrientations = true;
+        isPlayingOrientation = true;
         eventSystem.enabled = false;
-        yield return new WaitForSeconds(audioSource.clip.length + 0.1f);
+        yield return new WaitForSeconds(audioSource.clip.length + 1.5f);
     }
 
     public void triggerOrientations(){
@@ -152,9 +153,11 @@ public class Atlas : MonoBehaviour
         }
     }
 
-    private void stopOrientations() {
+    private IEnumerator stopOrientations() {
         audioSource.Stop();
+        isPlayingOrientation = false;
+        yield return new WaitForSeconds(0.5f);
         eventSystem.enabled = true;
-        playingOrientations = false;
+        eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
     }
 }
