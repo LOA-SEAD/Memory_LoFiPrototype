@@ -17,8 +17,12 @@ public class Atlas : MonoBehaviour
     public Text cardB;
     public Text descriptionText;
     public List<String> filenames;
-    public List<AtlasCard> atlasCards;    
+    public List<AtlasCard> atlasCards;  
+    public List<CardPairClass> cardsData = new List<CardPairClass>();
     private EventSystem eventSystem;
+
+    public AudioClip atlasHelpAudio, descAudio, firstAudio, pairAudio;
+    private AtlasCard detailsCard;
 
     private AudioSource audioSource;
 
@@ -51,18 +55,39 @@ public class Atlas : MonoBehaviour
         {
             if (card.cardData.pairNumber == pairNumber)
             {
+                this.detailsCard = card;
                 this.cardA.text = card.cardData.textA;
                 this.cardB.text = card.cardData.textB;
                 this.descriptionText.text = card.cardData.description;
                 this.detailPanel.SetActive(true);
+                eventSystem.enabled = false;
+                StartCoroutine("playPairDetails", card);
                 break;
             }
         }
     }
 
     private IEnumerator playPairDetails(AtlasCard card) {
-        return null;
-    } 
+        List<AudioClip> clips = new List<AudioClip>();
+        clips.Add(firstAudio);
+        clips.Add(card.cardAudioA);
+        clips.Add(pairAudio);
+        clips.Add(card.cardAudioB);
+        clips.Add(descAudio);
+        clips.Add(card.descriptionAudio);
+
+        isPlayingOrientation = true;
+        foreach (AudioClip clip in clips)
+        {
+            if (isPlayingOrientation) {
+                audioSource.clip = clip;
+                audioSource.Play();
+                yield return new WaitForSeconds(audioSource.clip.length);
+            } else {
+                break;
+            }
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -73,11 +98,25 @@ public class Atlas : MonoBehaviour
                 StartCoroutine(stopOrientations());
             } else {
                 if (detailPanel.activeSelf) {
-                    // Hides detail panel
-                    detailPanel.SetActive(false);
+                    if (isPlayingOrientation) {
+                        audioSource.Stop();
+                        isPlayingOrientation = false;
+                    } else {
+                        // Hides detail panel
+                        detailPanel.SetActive(false);
+                        eventSystem.enabled = true;
+                    }
                 } else {
                     // Trasition back to main menu
                     SceneManager.LoadScene(0);
+                }
+            }
+        } else if (Input.GetKeyDown(KeyCode.K)) {
+            if (!isPlayingOrientation){
+                if (detailPanel.activeSelf) {
+                    StartCoroutine("playPairDetails", detailsCard);
+                } else {
+                    triggerOrientations();
                 }
             }
         } else {
@@ -95,6 +134,7 @@ public class Atlas : MonoBehaviour
      IEnumerator loadAudio(AtlasCard ac) {
         string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/" + ac.cardData.audioA;
         string wwwPlayerFilePathB = "file://" + Application.streamingAssetsPath + "/" + ac.cardData.audioB;
+        string wwwPlayerFilePathD = "file://" + Application.streamingAssetsPath + "/" + ac.cardData.descriptionAudio;
 
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePath, AudioType.WAV)) {
             yield return www.SendWebRequest();
@@ -110,6 +150,13 @@ public class Atlas : MonoBehaviour
                 ac.cardAudioB = DownloadHandlerAudioClip.GetContent(www);
             }
         };
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePathD, AudioType.WAV)) {
+            yield return www.SendWebRequest();
+            if (www.isNetworkError) {
+            } else {
+                ac.descriptionAudio = DownloadHandlerAudioClip.GetContent(www);
+            }
+        };
         
         ac.cardText.text = ac.cardData.textA;
         ac.cardAudio.clip = ac.cardAudioA;
@@ -120,7 +167,6 @@ public class Atlas : MonoBehaviour
         String filepath = Application.streamingAssetsPath + "/";
 
         Debug.Log("Reading cards " + filepath);
-        int i = 0;
         foreach (String level in filenames)
         {
             using (StreamReader sr = new StreamReader(filepath + level)) 
@@ -128,14 +174,25 @@ public class Atlas : MonoBehaviour
                 while (sr.Peek() >= 0) 
                 {   
                     CardPairClass cpc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
-                    atlasCards[i].cardData = cpc;
-                    StartCoroutine("loadAudio",atlasCards[i]);
-                    i++;
+                    cardsData.Add(cpc);
                 }
             }
         }
 
+        SortCards();
+
         Debug.Log("Finished loading cards.");
+    }
+
+    private void SortCards() {
+        cardsData.Sort((x, y)=> string.Compare(x.textA, y.textA) );
+        int i = 0;
+        foreach (CardPairClass cpc in cardsData)
+        {
+            atlasCards[i].cardData = cpc;
+            StartCoroutine("loadAudio", atlasCards[i]);        
+            i++;
+        }
     }
 
     private IEnumerator playOrientation()
@@ -149,6 +206,7 @@ public class Atlas : MonoBehaviour
     public void triggerOrientations(){
         if (!audioSource.isPlaying)
         {
+            audioSource.clip = atlasHelpAudio;
             StartCoroutine(playOrientation());
         }
     }

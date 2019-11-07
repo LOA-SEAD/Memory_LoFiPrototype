@@ -367,6 +367,7 @@ MonoBehaviour:
   cardAudio: {fileID: 25495351}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 986649279}
   cardData:
     description: 
@@ -507,7 +508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -115.000015, y: 279}
+  m_AnchoredPosition: {x: -120, y: 279.12994}
   m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &68316320
@@ -715,6 +716,7 @@ MonoBehaviour:
   cardAudio: {fileID: 68316323}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1973432516}
   cardData:
     description: 
@@ -1018,6 +1020,7 @@ MonoBehaviour:
   cardAudio: {fileID: 139964214}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 796424617}
   cardData:
     description: 
@@ -1520,6 +1523,7 @@ MonoBehaviour:
   cardAudio: {fileID: 271717668}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1650206576}
   cardData:
     description: 
@@ -1870,8 +1874,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 291, y: -299.2}
-  m_SizeDelta: {x: 546.1, y: 102.4}
+  m_AnchoredPosition: {x: 310.00006, y: -308}
+  m_SizeDelta: {x: 566, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338444167
 MonoBehaviour:
@@ -2225,6 +2229,7 @@ MonoBehaviour:
   cardAudio: {fileID: 391689368}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1742651053}
   cardData:
     description: 
@@ -2573,6 +2578,7 @@ MonoBehaviour:
   cardAudio: {fileID: 584462868}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1328629284}
   cardData:
     description: 
@@ -3018,6 +3024,7 @@ MonoBehaviour:
   cardAudio: {fileID: 703525041}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 690052303}
   cardData:
     description: 
@@ -3287,6 +3294,7 @@ MonoBehaviour:
   cardAudio: {fileID: 725767627}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1680268229}
   cardData:
     description: 
@@ -3673,6 +3681,7 @@ MonoBehaviour:
   cardAudio: {fileID: 779983934}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 60526688}
   cardData:
     description: 
@@ -4021,6 +4030,7 @@ MonoBehaviour:
   cardAudio: {fileID: 810253317}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 307118639}
   cardData:
     description: 
@@ -4290,6 +4300,7 @@ MonoBehaviour:
   cardAudio: {fileID: 844297250}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 471417003}
   cardData:
     description: 
@@ -4559,6 +4570,7 @@ MonoBehaviour:
   cardAudio: {fileID: 872837179}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1739937457}
   cardData:
     description: 
@@ -4723,7 +4735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -435, y: 279}
+  m_AnchoredPosition: {x: -435, y: 279.12994}
   m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957943097
@@ -4931,6 +4943,7 @@ MonoBehaviour:
   cardAudio: {fileID: 957943100}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1177858442}
   cardData:
     description: 
@@ -5392,6 +5405,7 @@ MonoBehaviour:
   cardAudio: {fileID: 1160499798}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1521271917}
   cardData:
     description: 
@@ -6174,6 +6188,7 @@ MonoBehaviour:
   cardAudio: {fileID: 1436400367}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 238451089}
   cardData:
     description: 
@@ -7154,6 +7169,7 @@ MonoBehaviour:
   cardAudio: {fileID: 1825884038}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1423077644}
   cardData:
     description: 
@@ -7513,6 +7529,7 @@ MonoBehaviour:
   cardAudio: {fileID: 1899598228}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1174104009}
   cardData:
     description: 
@@ -7628,8 +7645,12 @@ MonoBehaviour:
   - {fileID: 271717669}
   - {fileID: 844297251}
   - {fileID: 810253318}
+  cardsData: []
+  atlasHelpAudio: {fileID: 8300000, guid: 984a75852b3a08249ad26398c84b6a0c, type: 3}
+  descAudio: {fileID: 8300000, guid: 0fad05a01a7f27e469b20e6579192627, type: 3}
+  firstAudio: {fileID: 8300000, guid: 8b4c17cd46cf80b4a8aebb1d3a2c392d, type: 3}
+  pairAudio: {fileID: 8300000, guid: b6447b8d3cbafd2429bb072b78521890, type: 3}
   lastselect: {fileID: 0}
-  started: 0
 --- !u!114 &1917821662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8154,6 +8175,7 @@ MonoBehaviour:
   cardAudio: {fileID: 2058339235}
   cardAudioA: {fileID: 0}
   cardAudioB: {fileID: 0}
+  descriptionAudio: {fileID: 0}
   cardText: {fileID: 1592841989}
   cardData:
     description: 

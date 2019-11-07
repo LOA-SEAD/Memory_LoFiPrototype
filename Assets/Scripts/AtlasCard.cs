@@ -6,6 +6,7 @@ public class AtlasCard : MonoBehaviour {
     public AudioSource cardAudio;
     public AudioClip cardAudioA;
     public AudioClip cardAudioB;
+    public AudioClip descriptionAudio;
     public Text cardText;
 
     public CardPairClass cardData;
