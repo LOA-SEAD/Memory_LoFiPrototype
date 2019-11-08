@@ -49,22 +49,17 @@ public class Atlas : MonoBehaviour
         loadCards();
     }
 
-    public void openPairDetails(int pairNumber)
+    public void openPairDetails(AtlasCard card)
     {
-        foreach (AtlasCard card in this.atlasCards)
-        {
-            if (card.cardData.pairNumber == pairNumber)
-            {
-                this.detailsCard = card;
-                this.cardA.text = card.cardData.textA;
-                this.cardB.text = card.cardData.textB;
-                this.descriptionText.text = card.cardData.description;
-                this.detailPanel.SetActive(true);
-                eventSystem.enabled = false;
-                StartCoroutine("playPairDetails", card);
-                break;
-            }
-        }
+        AudioSource source = card.gameObject.GetComponent(typeof(AudioSource)) as AudioSource;
+        source.Stop();
+        this.detailsCard = card;
+        this.cardA.text = card.cardData.textA;
+        this.cardB.text = card.cardData.textB;
+        this.descriptionText.text = card.cardData.description;
+        this.detailPanel.SetActive(true);
+        eventSystem.enabled = false;
+        StartCoroutine("playPairDetails", card);
     }
 
     private IEnumerator playPairDetails(AtlasCard card) {
