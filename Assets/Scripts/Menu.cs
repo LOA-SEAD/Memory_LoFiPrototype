@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
-	//To disable the mouse, together with Graphic Raycaster of Canvas unchecked
 	private GameObject lastselect;
 	private EventSystem eventSystem;
     public  AudioClip menuInstructions;
@@ -39,7 +38,7 @@ public class Menu : MonoBehaviour {
     // Update is called once per frame
     void Update () {         
         //Pause orientation and start the level
-        if(Input.GetKeyDown(KeyCode.K) && (isPlayingOrientation)) {  //Moving
+        if(Input.GetKeyDown(KeyCode.Escape) && (isPlayingOrientation)) {  //Moving
             audioSource.Stop();
             isPlayingOrientation = false;
             eventSystem.enabled = true;

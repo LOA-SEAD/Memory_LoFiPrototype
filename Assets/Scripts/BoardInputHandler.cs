@@ -49,10 +49,11 @@ public class BoardInputHandler : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
         eventSystem = GetComponent<EventSystem>();
         memoryPairing = GetComponent<MemoryPairing>();
         //lastselect = new GameObject();
-        String filepath = Application.streamingAssetsPath + "/" + filename;
+        String filepath = Application.streamingAssetsPath + "/Json/" + filename;
 
         Debug.Log("Reading cards " + filepath);
 
@@ -108,18 +109,19 @@ public class BoardInputHandler : MonoBehaviour {
 
         if (cartaAtual != null)
         {
-            string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/" + info.audioName;
+            string wwwPlayerFilePath = Application.streamingAssetsPath + "/" + info.audioName;
+
             using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePath, AudioType.WAV)) {
-            yield return www.SendWebRequest();
+                yield return www.SendWebRequest();
+                
+                if (www.isNetworkError) {
+                } else {
+                    cartaAtual.contentValue = DownloadHandlerAudioClip.GetContent(www);
+                }
             
-            if (www.isNetworkError) {
-            } else {
-                cartaAtual.contentValue = DownloadHandlerAudioClip.GetContent(www);
-            }
-        
-            cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber) info.pairNumber;
-            cartaAtual.GetComponentInChildren<Text>().text = info.cardText;
-        };
+                cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber) info.pairNumber;
+                cartaAtual.GetComponentInChildren<Text>().text = info.cardText;
+            };
         }
     }
 
