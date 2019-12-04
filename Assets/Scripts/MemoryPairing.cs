@@ -68,7 +68,7 @@ public class MemoryPairing : MonoBehaviour {
 
     void Update () {
         //Pause orientation and start the level
-        if(Input.GetKeyDown(KeyCode.K) && (isPlayingOrientation)) {  //Moving
+        if(Input.GetKeyDown(KeyCode.Escape) && (isPlayingOrientation)) {  //Moving
             audioSource.Stop();
             isPlayingOrientation = false;
             gameActive = true;

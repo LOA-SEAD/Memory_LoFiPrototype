@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,30 +50,29 @@ public class BoardInputHandler : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        BetterStreamingAssets.Initialize();
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         eventSystem = GetComponent<EventSystem>();
         memoryPairing = GetComponent<MemoryPairing>();
         //lastselect = new GameObject();
-        String filepath = Application.streamingAssetsPath + "/Json/" + filename;
+        String filepath = "/Json/" + filename;
 
         Debug.Log("Reading cards " + filepath);
 
-        using (StreamReader sr = new StreamReader(filepath)) 
+        var jsonText = BetterStreamingAssets.ReadAllLines(filepath);
+        foreach (var line in jsonText)
         {
-            while (sr.Peek() >= 0) 
-            {
-                CardPairClass cpc = JsonUtility.FromJson<CardPairClass>(sr.ReadLine());
-                CardClass cc1 = new CardClass();
-                CardClass cc2 = new CardClass();
-                cc1.cardText = cpc.textA;
-                cc1.audioName = cpc.audioA;
-                cc1.pairNumber = cpc.pairNumber;
-                cc2.cardText = cpc.textB;
-                cc2.audioName = cpc.audioB;
-                cc2.pairNumber = cpc.pairNumber;
-                cardsData.Add(cc1);
-                cardsData.Add(cc2);
-            }
+            CardPairClass cpc = JsonUtility.FromJson<CardPairClass>(line);
+            CardClass cc1 = new CardClass();
+            CardClass cc2 = new CardClass();
+            cc1.cardText = cpc.textA;
+            cc1.audioName = cpc.audioA;
+            cc1.pairNumber = cpc.pairNumber;
+            cc2.cardText = cpc.textB;
+            cc2.audioName = cpc.audioB;
+            cc2.pairNumber = cpc.pairNumber;
+            cardsData.Add(cc1);
+            cardsData.Add(cc2);
         }
 
         Shuffle<CardClass>(cardsData);
@@ -134,6 +134,7 @@ public class BoardInputHandler : MonoBehaviour {
             {
                 lastselect = eventSystem.currentSelectedGameObject;
             }
+
             if(Input.GetKeyDown(KeyCode.RightArrow)) {  //Moving
                 MoveRight();
             } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
@@ -144,8 +145,6 @@ public class BoardInputHandler : MonoBehaviour {
                 MoveUp();
             } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
                 MoveDown();
-            } else if (Input.GetMouseButtonDown(0)){ //To not bug the selection system
-                eventSystem.SetSelectedGameObject(lastselect);
             } else if (Input.GetKeyDown(KeyCode.Q)) { //Direct access
                 Access(0, 0);
             } else if (Input.GetKeyDown(KeyCode.W)) {
@@ -199,10 +198,6 @@ public class BoardInputHandler : MonoBehaviour {
     public void toggleMenu() {
         memoryPairing.PlayBackToMenu();
         if (menuPanel.activeSelf) {
-            //Lock cursor
-            Cursor.lockState = CursorLockMode.Locked;
-            //Change cursor to invisible again
-            Cursor.visible = false;
             menuPanel.SetActive(false);
             eventSystem.SetSelectedGameObject(lastselect);
         } else {
@@ -217,15 +212,21 @@ public class BoardInputHandler : MonoBehaviour {
 
     }
 
-    public void Submit() {
+    public void Submit(GameObject obj) {
         if (eventSystem.currentSelectedGameObject == null)
         {
-            //play wall sound
-            lastselect.GetComponent<Card>().PlayWallSound();
+            if (obj){
+                eventSystem.SetSelectedGameObject(obj);
+            } else {
+                //play wall sound
+                lastselect.GetComponent<Card>().PlayWallSound();
+            }
         }
-        else
+        else if(eventSystem.currentSelectedGameObject == obj)
         {
             eventSystem.currentSelectedGameObject.GetComponent<Card>().TrySubmit();
+        } else {
+            eventSystem.SetSelectedGameObject(obj);
         }
     }
 

@@ -226,12 +226,12 @@ RectTransform:
   m_Children:
   - {fileID: 448836122}
   m_Father: {fileID: 1810054629}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.00006513596, y: 0}
-  m_SizeDelta: {x: 1600, y: 175.5}
+  m_AnchoredPosition: {x: -0.0000076294, y: -0.012573242}
+  m_SizeDelta: {x: 1366, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98211310
 MonoBehaviour:
@@ -307,13 +307,13 @@ RectTransform:
   - {fileID: 1186052896}
   - {fileID: 53994380}
   - {fileID: 421125649}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 118.999756, y: -155}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &158484658
 AudioSource:
@@ -337,7 +337,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0.25
+  Pan2D: 0.5
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 3
-  selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
+  selectSound: {fileID: 8300000, guid: 0de1d8c93d8ba5f4da23a6a4efb9bdfd, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: a629dcbe1e7b0ca4890a1e359498ddf1, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -479,10 +479,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 158484656}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -732,13 +732,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d49192e45b6635740b981ccad27ae440, type: 3}
   - {fileID: 8300000, guid: eee24cc6856936b4a901b397b6b9651a, type: 3}
   indexOrientations: 0
-  orientationCongratulations1: {fileID: 8300000, guid: 8656ed22aaec0a84393798108229684b,
+  orientationCongratulations1: {fileID: 8300000, guid: 1c5dda84949702540ae5b2ae15d3b4f4,
     type: 3}
-  orientationCongratulations2: {fileID: 8300000, guid: 2225740551cc4d548858c56b8d39cc60,
+  orientationCongratulations2: {fileID: 8300000, guid: ba7b4718526c8244085346abf6442dfa,
     type: 3}
-  orientationCongratulationsAfterLevel: {fileID: 8300000, guid: b82e963a3b7c4964ea6f3d69a757ab7f,
+  orientationCongratulationsAfterLevel: {fileID: 8300000, guid: 00f6a29bdfd8fbb42bfcc715f2dbff6e,
     type: 3}
-  orientationCongratulationsGameFinished: {fileID: 8300000, guid: 7ccbd9ad819a27e4cadbb6aeac24f1a5,
+  orientationCongratulationsGameFinished: {fileID: 8300000, guid: b6b0c2b83157101449be97faeae1adfc,
     type: 3}
 --- !u!114 &377417235
 MonoBehaviour:
@@ -1460,13 +1460,13 @@ RectTransform:
   - {fileID: 970863858}
   - {fileID: 204435485}
   - {fileID: 1687599948}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 429, y: 166.99991}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498387063
 MonoBehaviour:
@@ -1513,10 +1513,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 498387061}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 3
-  selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
+  selectSound: {fileID: 8300000, guid: 9676a99f2614ffc4a8248a36505aed29, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: cb1184dafbef85940820ccc6a67e24ff, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -1607,7 +1607,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0.75
+  Pan2D: 1
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0
@@ -1728,6 +1728,74 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!1 &592175999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592176000}
+  - component: {fileID: 592176001}
+  m_Layer: 5
+  m_Name: Card Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &592176000
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592175999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 716030173}
+  - {fileID: 1238143405}
+  - {fileID: 968052949}
+  - {fileID: 498387062}
+  - {fileID: 1857808918}
+  - {fileID: 1606697783}
+  - {fileID: 158484657}
+  - {fileID: 743554401}
+  m_Father: {fileID: 1810054629}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0.099975586}
+  m_SizeDelta: {x: 1366, y: 594.8}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &592176001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592175999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 160, y: 160}
+  m_Spacing: {x: 180, y: 180}
+  m_Constraint: 2
+  m_ConstraintCount: 2
 --- !u!1 &610740585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,13 +1905,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1810054629}
-  m_RootOrder: 8
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 276, y: -395}
-  m_SizeDelta: {x: 546, y: 57.6}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.1550293}
+  m_SizeDelta: {x: 683, y: 88.45001}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &665345366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1990,20 +2058,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716030172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1801531104}
   - {fileID: 921461399}
   - {fileID: 1970567535}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -469.99976, y: 166.99994}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716030174
 MonoBehaviour:
@@ -2050,10 +2118,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 716030172}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2112,7 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 1
-  selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
+  selectSound: {fileID: 8300000, guid: 9676a99f2614ffc4a8248a36505aed29, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 3ec9fad0add620e4ba3b922103ba66d7, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -2144,7 +2212,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: -0.75
+  Pan2D: -1
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0
@@ -2301,13 +2369,13 @@ RectTransform:
   - {fileID: 1062178829}
   - {fileID: 2069956056}
   - {fileID: 801033578}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 426.99976, y: -155}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743554402
 MonoBehaviour:
@@ -2354,10 +2422,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 743554400}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2416,7 +2484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 1
-  selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
+  selectSound: {fileID: 8300000, guid: 0de1d8c93d8ba5f4da23a6a4efb9bdfd, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: 0c4620ddfeb0cd541a5e664e6b06a312, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -2448,7 +2516,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0.75
+  Pan2D: 1
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0
@@ -3264,13 +3332,13 @@ RectTransform:
   - {fileID: 792582132}
   - {fileID: 1263622330}
   - {fileID: 1311747997}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 121, y: 167}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &968052950
 AudioSource:
@@ -3294,7 +3362,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0.25
+  Pan2D: 0.5
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0
@@ -3381,7 +3449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 2
-  selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
+  selectSound: {fileID: 8300000, guid: 9676a99f2614ffc4a8248a36505aed29, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: beec5d52a0166a348ade552a12b01c7d, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -3436,10 +3504,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 968052948}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3872,13 +3940,13 @@ RectTransform:
   - {fileID: 1604928556}
   - {fileID: 420712786}
   - {fileID: 889595266}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -176.00003, y: 166.99994}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238143406
 MonoBehaviour:
@@ -3925,10 +3993,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1238143404}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3987,7 +4055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 2
-  selectSound: {fileID: 8300000, guid: 7ff84185d57529b498619cf68f337d5d, type: 3}
+  selectSound: {fileID: 8300000, guid: 9676a99f2614ffc4a8248a36505aed29, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: beec5d52a0166a348ade552a12b01c7d, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -4019,7 +4087,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: -0.25
+  Pan2D: -0.5
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0
@@ -4665,13 +4733,13 @@ RectTransform:
   - {fileID: 1882114522}
   - {fileID: 1392166220}
   - {fileID: 992861429}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -178.00027, y: -155}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1606697784
 MonoBehaviour:
@@ -4718,10 +4786,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1606697782}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4780,7 +4848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 3
-  selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
+  selectSound: {fileID: 8300000, guid: 0de1d8c93d8ba5f4da23a6a4efb9bdfd, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: a629dcbe1e7b0ca4890a1e359498ddf1, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -4812,7 +4880,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: -0.25
+  Pan2D: -0.5
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0
@@ -5204,14 +5272,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 716030173}
-  - {fileID: 1238143405}
-  - {fileID: 968052949}
-  - {fileID: 498387062}
-  - {fileID: 1857808918}
-  - {fileID: 1606697783}
-  - {fileID: 158484657}
-  - {fileID: 743554401}
+  - {fileID: 592176000}
   - {fileID: 665345365}
   - {fileID: 98211309}
   m_Father: {fileID: 0}
@@ -5392,13 +5453,13 @@ RectTransform:
   - {fileID: 709312819}
   - {fileID: 1893090389}
   - {fileID: 610740586}
-  m_Father: {fileID: 1810054629}
+  m_Father: {fileID: 592176000}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -472, y: -155}
-  m_SizeDelta: {x: 240, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1857808919
 MonoBehaviour:
@@ -5445,10 +5506,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 377417235}
         m_MethodName: Submit
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1857808917}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5507,7 +5568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardNumber: 2
-  selectSound: {fileID: 8300000, guid: fef42fd5361609b42bf2b4fb8cdd7c23, type: 3}
+  selectSound: {fileID: 8300000, guid: 0de1d8c93d8ba5f4da23a6a4efb9bdfd, type: 3}
   wallSound: {fileID: 8300000, guid: 25d5234cea563ef40936f731194b0011, type: 3}
   contentValue: {fileID: 8300000, guid: ad42ed2d9efa1e64f97c9e1ada4e4a37, type: 3}
   invalidCard: {fileID: 8300000, guid: 80dcf36c55b0d1847834ac17c4a79a1a, type: 3}
@@ -5539,7 +5600,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: -0.75
+  Pan2D: -1
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 0

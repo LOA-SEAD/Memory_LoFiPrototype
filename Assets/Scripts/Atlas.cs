@@ -11,8 +11,6 @@ using UnityEngine.SceneManagement;
 
 public class Atlas : MonoBehaviour
 {
-    
-
     public GameObject detailPanel;
     public Text cardA;
     public Text cardB;

@@ -32,20 +32,6 @@ public class Card : MonoBehaviour {
         selectPitch = audioSource.pitch;
     }
 
-    private void OnMouseEnter()
-    {
-        SelectCard();
-    }
-    private void OnMouseExit()
-    {
-        DeselectCard();
-    }
-
-    private void OnMouseDown()
-    {
-        TrySubmit();
-    }
-
     public void TrySubmit()
     {
         if (MemoryPairing.canSelect)
