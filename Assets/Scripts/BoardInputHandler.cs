@@ -32,6 +32,8 @@ public class BoardInputHandler : MonoBehaviour {
     private int lineCard;
     private int cardIndex;
     private int contador;
+
+    //public Text debugText;
     private List<CardClass> cardsData = new List<CardClass>();
     private System.Random rng = new System.Random();
 
@@ -48,10 +50,16 @@ public class BoardInputHandler : MonoBehaviour {
         }
     }
 
+    void Awake () {
+        #if UNITY_ANDROID
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
+            Screen.fullScreen = false;
+        #endif
+    }
+
     // Use this for initialization
     void Start () {
         BetterStreamingAssets.Initialize();
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
         eventSystem = GetComponent<EventSystem>();
         memoryPairing = GetComponent<MemoryPairing>();
         //lastselect = new GameObject();
@@ -85,7 +93,11 @@ public class BoardInputHandler : MonoBehaviour {
             {
                 currRow = i;
                 currColumn = j;
-                StartCoroutine("loadAudio", cardsData[k]);
+                try {
+                    StartCoroutine("loadAudio", cardsData[k]);
+                } catch (Exception e) {
+                    //debugText.text = e.ToString();
+                }
                 k++;
             }
         }
@@ -106,23 +118,26 @@ public class BoardInputHandler : MonoBehaviour {
         {
             cartaAtual = row4[currColumn].GetComponent<Card>();
         }
-
-        if (cartaAtual != null)
-        {
-            string wwwPlayerFilePath = Application.streamingAssetsPath + "/" + info.audioName;
-
-            using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePath, AudioType.WAV)) {
-                yield return www.SendWebRequest();
+            if (cartaAtual != null)
+            {
+                #if UNITY_STANDALONE_LINUX
+                    string wwwPlayerFilePath = "file://" + Application.streamingAssetsPath + "/" + info.audioName;
+                #else
+                    string wwwPlayerFilePath = Application.streamingAssetsPath + "/" + info.audioName;
+                #endif
                 
-                if (www.isNetworkError) {
-                } else {
-                    cartaAtual.contentValue = DownloadHandlerAudioClip.GetContent(www);
-                }
-            
-                cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber) info.pairNumber;
-                cartaAtual.GetComponentInChildren<Text>().text = info.cardText;
-            };
-        }
+                using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(wwwPlayerFilePath, AudioType.WAV)) {
+                    yield return www.SendWebRequest();
+                    
+                    if (!www.isNetworkError) {
+                        cartaAtual.contentValue = DownloadHandlerAudioClip.GetContent(www);
+                    } else {
+                        //debugText.text = debugText.text + www.error;
+                    }
+                    cartaAtual.GetComponentInChildren<Card>().cardNumber = (CardNumber) info.pairNumber;
+                    cartaAtual.GetComponentInChildren<Text>().text = info.cardText;
+                };
+            }
     }
 
     // Update is called once per frame

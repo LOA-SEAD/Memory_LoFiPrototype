@@ -84,6 +84,10 @@ public class Atlas : MonoBehaviour
         }
     }
 
+    public void ReturnToMenu(){
+        SceneManager.LoadScene(0);
+    }
+
     // Update is called once per frame
     void Update()
     {
