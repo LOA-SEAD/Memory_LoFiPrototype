@@ -52,7 +52,6 @@ public class BoardInputHandler : MonoBehaviour {
 
     void Awake () {
         #if UNITY_ANDROID
-            Screen.orientation = ScreenOrientation.LandscapeLeft;
             Screen.fullScreen = false;
         #endif
     }
@@ -96,7 +95,6 @@ public class BoardInputHandler : MonoBehaviour {
                 try {
                     StartCoroutine("loadAudio", cardsData[k]);
                 } catch (Exception e) {
-                    //debugText.text = e.ToString();
                 }
                 k++;
             }

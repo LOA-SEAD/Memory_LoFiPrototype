@@ -15,6 +15,7 @@ public class Atlas : MonoBehaviour
     public Text cardA;
     public Text cardB;
     public Text descriptionText;
+    public Text hintText;
     public List<String> filenames;
     public List<AtlasCard> atlasCards;  
     public List<CardPairClass> cardsData = new List<CardPairClass>();
@@ -59,6 +60,11 @@ public class Atlas : MonoBehaviour
         this.descriptionText.text = card.cardData.description;
         this.detailPanel.SetActive(true);
         eventSystem.enabled = false;
+        #if UNITY_ANDROID
+            hintText.text = "Pressione [◁] para pular a descrição.";
+        #else
+            hintText.text = "Pressione [Esc] para pular a descrição.";
+        #endif
         StartCoroutine("playPairDetails", card);
     }
 
@@ -82,6 +88,12 @@ public class Atlas : MonoBehaviour
                 break;
             }
         }
+
+        #if UNITY_ANDROID
+            hintText.text = "Pressione [◁] para voltar à lista de cartas.";
+        #else
+            hintText.text = "Pressione [Esc] para voltar à lista de cartas.";
+        #endif
     }
 
     public void ReturnToMenu(){
@@ -222,6 +234,13 @@ public class Atlas : MonoBehaviour
         if (!isPlayingCardDetails) {
             eventSystem.enabled = true;
             eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+            
+        } else {
+            #if UNITY_ANDROID
+                hintText.text = "Pressione [◁] para voltar à lista de cartas.";
+            #else
+                hintText.text = "Pressione [Esc] para voltar à lista de cartas.";
+            #endif
         }
 
         isPlayingAtlasOrientation = false;

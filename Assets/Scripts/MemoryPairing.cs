@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum CardNumber {
     none,
@@ -22,7 +23,7 @@ public class MemoryPairing : MonoBehaviour {
     public Card currentCard;
     public float waitingTime;
     private EventSystem eventSystem;
-
+    public Text hintText;
     public int pairsTotal;
     public int pairsFound;
 
@@ -51,12 +52,20 @@ public class MemoryPairing : MonoBehaviour {
         board = this.GetComponent<BoardInputHandler>();
         canSelect = false;
         eventSystem = GetComponent<EventSystem>();
+
+        #if UNITY_ANDROID
+            hintText.text = "Pressione [◁] para pular as instruções.";
+        #else
+            hintText.text = "Pressione [Esc] para pular as instruções.";
+        #endif
+
         //Lock cursor
         //Cursor.lockState = CursorLockMode.Locked;
         // Hide cursor when locking
         //Cursor.visible = false;
         //triggerOrientations(orientationThemeLevel);
         triggerOrientations();
+        
     }
 
 	// Use this for initialization
@@ -81,6 +90,11 @@ public class MemoryPairing : MonoBehaviour {
         eventSystem.enabled = true;
         eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
         board.enabled = true;
+        #if UNITY_ANDROID
+            hintText.text = "Pressione [◁] para abrir o menu de pausa.";
+        #else
+            hintText.text = "Pressione [Esc] para abrir o menu de pausa.";
+        #endif
     }
 
     #region Memory Game logics

@@ -34,7 +34,6 @@ public class Menu : MonoBehaviour {
 	void Start()
     {
         #if UNITY_ANDROID
-            Screen.orientation = ScreenOrientation.Portrait;
             Screen.fullScreen = false;
         #endif
     }
@@ -89,6 +88,7 @@ public class Menu : MonoBehaviour {
         } else {
             isPlayingOrientation = true;
             eventSystem.enabled = false;
+            yield return new WaitForSeconds(1.5f);
             foreach (AudioClip audio in instructions)
             {
                 if (isPlayingOrientation){
